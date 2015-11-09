@@ -7,7 +7,6 @@
 //
 
 #import "MYProgressHUD.h"
-#import "MYAssistant.h"
 
 @implementation MYProgressHUD
 
@@ -40,7 +39,7 @@
     [inView addSubview:_hud];
     
     if (imageName && imageName.length > 0) {
-        _hud.customView = [[UIImageView alloc] initWithImage:[MYAssistant imageWithContentsOfFile:imageName]];
+        _hud.customView = [[UIImageView alloc] initWithImage:[HPAssistant imageWithContentsOfFile:imageName]];
         _hud.mode = MBProgressHUDModeCustomView;
     }
     _hud.minSize = CGSizeMake(150.f, 100.f);

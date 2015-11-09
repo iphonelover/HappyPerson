@@ -28,7 +28,8 @@
 
 //        self.wantsFullScreenLayout = YES;
         //以上的方法过期了，下面两句使得tableview不会和上方的导航条有20的距离
-        self.extendedLayoutIncludesOpaqueBars = NO;
+        self.extendedLayoutIncludesOpaqueBars = NO;//不透明的操作栏
+
         //如果elf.edgesForExtendedLayout不能设置成UIRectEdgeTop或者UIRectEdgeAll，tableview和导航条之间也会有20的间距
         self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
 
@@ -177,6 +178,12 @@
         [_viewNaviBar setCenterView:centerView];
     }else{}
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 
 
 #pragma mark- KeyBoardNotification

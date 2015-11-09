@@ -92,9 +92,9 @@
 -(void)enter
 {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kFirstLogined"];
-    _xwTabBarController = [[KLTableBarController alloc] init];
+    _hpTabBarController = [[HPTableBarController alloc] init];
 //    _xwTabBarController.tabBar.hidden = YES;
-    self.window.rootViewController = _xwTabBarController;
+    self.window.rootViewController = _hpTabBarController;
     
     
 

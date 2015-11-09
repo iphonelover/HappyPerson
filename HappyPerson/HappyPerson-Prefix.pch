@@ -24,6 +24,7 @@
 #import "UIImage+WB.h"
 #import "GlobalDefine.h"
 #import "MYHeader.h"
+#import "UITableView+HPTableView.h"
 
 
 /*

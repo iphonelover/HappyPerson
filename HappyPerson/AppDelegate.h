@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "KLTableBarController.h"
+#import "HPTableBarController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -17,7 +17,7 @@
 @property (assign, nonatomic) BOOL locationYES;
 
 @property (nonatomic, assign) CLLocation *currentLocation;
-@property (nonatomic, strong) KLTableBarController *xwTabBarController;
+@property (nonatomic, strong) HPTableBarController *hpTabBarController;
 
 
 

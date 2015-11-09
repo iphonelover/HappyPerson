@@ -684,7 +684,7 @@ static char UIScrollViewPullToRefreshView;
 
 - (void)drawRect:(CGRect)rect {
     
-    UIImage *image = [MYAssistant imageWithContentsOfFile:@"MYRefreshDown"];
+    UIImage *image = [HPAssistant imageWithContentsOfFile:@"MYRefreshDown"];
     [image drawAtPoint:CGPointMake(0.f, 0.f)];
 //	CGContextRef c = UIGraphicsGetCurrentContext();
 //	// the rects above the arrow

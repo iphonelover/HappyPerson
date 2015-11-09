@@ -18,4 +18,5 @@
 #import <MAMapKit/MAMapKit.h>
 //#import "CWNetWorkListenner.h"
 #import "MYProgressHUD.h"
+#import "HPAssistant.h"
 #endif

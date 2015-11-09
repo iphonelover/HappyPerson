@@ -9,7 +9,7 @@
 #import "SetViewController.h"
 #import "SetTableCell.h"
 
-@interface SetViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface SetViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIButton *m_btnNaviLeft;
 @property (nonatomic, strong) UITableView *settingTableView;
@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ApplicationDelegate.xwTabBarController.customTabBar.hidden = YES;
+    ApplicationDelegate.hpTabBarController.customTabBar.hidden = YES;
 
     // Do any additional setup after loading the view.
     [self setNaviBarTitle:@"设置"];
@@ -48,7 +48,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    ApplicationDelegate.xwTabBarController.customTabBar.hidden = NO;
+    ApplicationDelegate.hpTabBarController.customTabBar.hidden = NO;
 }
 
 -(void)backAction
@@ -154,6 +154,50 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row) {
+        case 0:{
+            
+            break;
+        }
+        case 1:{
+            NSString *rootPath = HPCachesPath;
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            float fileSize = 0.0;
+            if ([fileManager fileExistsAtPath:rootPath]) {
+                NSArray *childFiles = [fileManager subpathsAtPath:rootPath];
+                for (NSString *fileName in childFiles) {
+                    NSString *fileFullPath = [rootPath stringByAppendingPathComponent:fileName];
+                    fileSize = [HPAssistant fileSizeAtPath:fileFullPath];
+                }
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"清理缓存" message:[NSString stringWithFormat:@"%.2fM,你确定清理缓存吗?",fileSize] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+                alertView.tag = 10001;
+            }
+            break;
+        }
+        case 2:{
+            
+        }
+            
+        default:
+            break;
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 10001) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        if ([fileManager fileExistsAtPath:HPCachesPath]) {
+            NSArray *files = [fileManager subpathsAtPath:HPCachesPath];
+            for (NSString *fileName in files) {
+                NSString *fileFullPath = [HPCachesPath stringByAppendingPathComponent:fileName];
+                [fileManager removeItemAtPath:fileFullPath error:nil];
+            }
+        }
+    }
 }
 
 

@@ -1,20 +1,20 @@
 //
 //  WBTabbar.m
-//  XinWeibo
+//  HappyPerson
 //
-//  Created by tanyang on 14-10-6.
-//  Copyright (c) 2014年 tany. All rights reserved.
+//  Created by wei on 15/6/20.
+//  Copyright (c) 2015年 shuji. All rights reserved.
 //
 
-#import "WBTabBar.h"
+#import "HPTabBar.h"
 #import "UIImage+WB.h"
-#import "WBTabBarButton.h"
+#import "HPTabBarButton.h"
 
-@interface WBTabBar()
+@interface HPTabBar()
 @property (nonatomic, weak) UIButton *selectButton;
 @property (nonatomic, strong) NSMutableArray *arrButton;
 @end
-@implementation WBTabBar
+@implementation HPTabBar
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -23,16 +23,7 @@
         // Initialization code
         if (!ios7) {
             self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"tabbar_background"]];
-        }else {
-            if (kMainScreenWidth == 375) {
-                self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tab_new_bar_bg-750"]];
-            }else{
-                self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tab_new_bar_bg"]];
-            }
         }
-//        else{
-//            self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithName:@"tab_new_bar_bg"]];
-//        }
     }
     return self;
 }
@@ -49,7 +40,7 @@
 - (void)addButtonWithItem:(UITabBarItem *)item
 {
     // 创建按钮
-    WBTabBarButton *button = [[WBTabBarButton alloc]init];
+    HPTabBarButton *button = [[HPTabBarButton alloc]init];
     [self addSubview:button];
     [self.arrButton addObject:button];
     
@@ -78,21 +69,17 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    //NSLog(@"%@",self.subviews);
-    // 调整加号按钮的位置
-//    CGFloat h = self.frame.size.height;
-    CGFloat h = 49;
-    CGFloat w = self.frame.size.width;
+//    CGFloat w = self.frame.size.width;
     
     // 按钮的frame数据
-    CGFloat buttonH = h;
-    CGFloat buttonW = w / self.subviews.count;
-//    CGFloat buttonY = 0;
-    CGFloat buttonY = 15;//由于tabbar是自定义的高度由原来的49变成了64，因此y坐标由0变成了15
+    CGFloat buttonH = self.frame.size.height;
+    CGFloat buttonW = kMainScreenWidth/self.subviews.count;
+    CGFloat buttonY = 0;
+//    CGFloat buttonY = 15;//由于tabbar是自定义的高度由原来的49变成了64，因此y坐标由0变成了15
     
     for (int index = 0; index<self.arrButton.count; index++) {
         // 1.取出按钮
-        WBTabBarButton *button = self.arrButton[index];
+        HPTabBarButton *button = self.arrButton[index];
         
         // 2.设置按钮的frame
         CGFloat buttonX = index * buttonW;
@@ -103,13 +90,5 @@
         button.tag = index;
     }
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

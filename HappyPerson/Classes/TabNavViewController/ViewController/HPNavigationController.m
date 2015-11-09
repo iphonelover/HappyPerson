@@ -1,19 +1,18 @@
 //
-//  KLNavigationController.m
-//  KnowingLife
+//  HPNavigationController.m
+//  HappyPerson
 //
-//  Created by tanyang on 14/10/26.
-//  Copyright (c) 2014年 tany. All rights reserved.
+//  Created by wei on 15/6/20.
+//  Copyright (c) 2015年 shuji. All rights reserved.
 //
-
-#import "KLNavigationController.h"
+#import "HPNavigationController.h"
 #import "MainViewController.h"
 
-@interface KLNavigationController ()
+@interface HPNavigationController ()
 
 @end
 
-@implementation KLNavigationController
+@implementation HPNavigationController
 
 - (void)viewDidLoad
 {

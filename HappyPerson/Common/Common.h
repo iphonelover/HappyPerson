@@ -6,7 +6,6 @@
 //  Copyright (c) 2015年 shuji. All rights reserved.
 //
 
-#import "MYAssistant.h"
 #import "UIColor+Additions.h"
 #import "CustomViewController.h"
 #import "CustomNaviBarView.h"
@@ -142,6 +141,8 @@ static NSString * const kFirstUpload = @"kFirstUpload";
 
 //是否为一直登录状态
 static NSString * const kRetainLogining = @"kRetainLogining";
+
+#define HPCachesPath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]
 
 
 //强化NSLog

@@ -43,7 +43,7 @@
         _textLabel.textColor = [UIColor blackColor];
         _textLabel.textAlignment = NSTextAlignmentCenter;
 //        _textLabel.backgroundColor = [UIColor redColor];
-        _textLabel.text = @"你猜我猜";
+//        _textLabel.text = @"你猜我猜";
 
         [self addSubview:_textLabel];
         

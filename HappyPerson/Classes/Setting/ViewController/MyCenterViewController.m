@@ -26,7 +26,7 @@
     self.view.backgroundColor = [UIColor blueColor];
     
     //从plist文件里获取内容
-    _dataSource = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"MyInterface" ofType:@"plist"]];
+    _dataSource = [HPAssistant arrayWithStringFromPlist:@"MyInterface.plist"];
     
     
 //    _settingTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight - 64)];
