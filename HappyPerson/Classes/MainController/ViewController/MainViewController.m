@@ -18,6 +18,8 @@
 #import "SDCycleScrollView.h"
 
 #import "TableViewCell1.h"
+#import "ScrollViewTableCell.h"
+#import "HPFamousTableCell.h"
 //#import "GuidanceView.h"
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SDCycleScrollViewDelegate>
 
@@ -37,6 +39,8 @@
 @property (nonatomic, strong) NSDictionary *imgTitleDic;
 @property (nonatomic, strong) NSArray *imgArray;
 
+@property (nonatomic,strong) NSArray *scrollDataArray;
+
 
 //城市选择
 
@@ -48,6 +52,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+
+    _scrollDataArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"scrollData" ofType:@"plist"]];
     //此句隐藏navigationBar
 //    [self hideNaviBar:YES];
 
@@ -88,11 +94,7 @@
 
     NSLog(@"locationCity is %@",ApplicationDelegate.locationCity);
     [self setNaviBarTitle:@"生活"];
-    _imageArray = [NSArray arrayWithObjects:@"icon_homepage_aroundjourneyCategory",@"icon_homepage_beautyCategory",@"icon_homepage_cakeCategory",@"icon_homepage_CouponCategory",@"icon_homepage_dailyNewDealCategory",@"icon_homepage_fastfoodCategory",@"icon_homepage_foodCategory",@"icon_homepage_foottreatCategory", nil];
-
-    _titleArray = [NSArray arrayWithObjects:@"美食",@"电影",@"酒店",@"KTV",@"优惠买单",@"周边游",@"预定早餐",@"外卖", nil];
-
-    _imgTitleDic = [NSDictionary dictionaryWithObjectsAndKeys:_imageArray,@"imageview",_titleArray,@"title", nil];
+    
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight-64)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -101,7 +103,7 @@
     _tableView.contentSize = CGSizeMake(kMainScreenWidth, 3000);
     [self.view addSubview:_tableView];
 
-    _tableView.tableHeaderView = [self tableViewWithHeaderView];
+//    _tableView.tableHeaderView = [self tableViewWithHeaderView];
 
 
     _cityBtn = [CustomNaviBarView createNormalNaviBarBtnByTitle:ApplicationDelegate.locationCity target:self action:@selector(selectCity:)];
@@ -134,7 +136,7 @@
 
 -(UIView *)tableViewWithHeaderView
 {
-    UIView *headerView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 270)];
+    UIView *headerView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 100)];
     headerView.backgroundColor = [UIColor colorWithHexString:@"#f4f4f4"];
 
     SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kMainScreenWidth, 100) imagesGroup:_imgArray];
@@ -144,36 +146,9 @@
     [headerView addSubview:cycleScrollView];
 
 
-
-
-    //scrollview
-
-
-    //UICollectionViewFlowLayout
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-//    flowLayout.headerReferenceSize = CGSizeMake(kMainScreenWidth, 0);
-    _collectionView = [[MYCollectionView alloc] initWithFrame:CGRectMake(0, 105, kMainScreenWidth, 160) withFlowLayout:flowLayout];
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
-    _collectionView.backgroundColor = [UIColor redColor];
-    [headerView addSubview:_collectionView];
-
-    //注册cell和ReusableView（相当于头部）
-    [_collectionView registerClass:[MYCollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewCell"];
-
     return headerView;
 }
 
--(UIScrollView *)twoCollectionViewWithScrollView
-{
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 105, kMainScreenWidth, 180)];
-    scrollView.delegate = self;
-    scrollView.pagingEnabled = YES;
-    scrollView.contentSize = CGSizeMake(2*kMainScreenWidth, 180);
-    scrollView.showsHorizontalScrollIndicator = NO;
-    return scrollView;
-}
 
 -(void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
@@ -205,12 +180,89 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+//    if (section==5) {
+//        return 5;
+//    }
+    return 1;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  90.f;
+    switch (indexPath.section) {
+        case 0:{
+            return 180.f;
+            break;
+        }
+        case 1:{
+            return 120.f;
+            break;
+        }
+//        case 2:{
+//            return 240.f;
+//            break;
+//        }
+//        case 3:{
+//            return 140.f;
+//            break;
+//        }
+//        case 4:{
+//            return 150.f;
+//            break;
+//        }
+//        case 5:{
+//            switch (indexPath.row) {
+//                case 0:
+//                    return 35.f;
+//                    break;
+//                    
+//                default:
+//                    return 100.f;
+//                    break;
+//            }
+//        }
+            
+        default:
+            break;
+    }
+    return  70.f;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:{
+            return 1.f;
+            break;
+        }
+            
+        default:
+            return 5.f;
+            break;
+    }
+    return 5.f;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 5.f;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 5)];
+    headerView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
+    return headerView;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 5)];
+    footerView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
+    return footerView;
 }
 
 //-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -221,119 +273,58 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"CellIdentifier";
 
-    _cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (_cell == nil) {
-        _cell = [[TableViewCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    switch (indexPath.section) {
+        case 0:{
+            static NSString *cellIdentifier1 = @"CellIdentifier1";
+            ScrollViewTableCell *scrollCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier1];
+            if (scrollCell == nil) {
+                scrollCell = [[ScrollViewTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier1 withPlist:_scrollDataArray];
+            }
+            scrollCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+            return scrollCell;
 
+            break;
+        }
+        case 1:{
+            static NSString *cellIdentifier2 = @"CellIdentifier2";
+            HPFamousTableCell *famousCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier2];
+            if (famousCell==nil) {
+                famousCell = [[HPFamousTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier2];
+            }
+            famousCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            famousCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+            famousCell.backgroundClickBlock = ^{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"跳转" message:@"跳转到下一页" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alert show];
+            };
+            return famousCell;
+            break;
+        }
+//        case 2:{
+//            break;
+//        }
+//        case 3:{
+//            break;
+//        }
+//        case 4:{
+//            break;
+//        }
+//        case 5:{
+//            break;
+//        }
+            
+            
+        default:
+            break;
     }
 
-    return _cell;
+    return nil;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
-//===========================================================
-#pragma mark - UICollectionViewDataSource
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 8;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    MYCollectionViewCell *cell = nil;
-    static NSString *cellIdentify = @"collectionViewCell";
-    cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentify forIndexPath:indexPath];
-    [cell sizeToFit];
-    //判断返回的数据的个数是否大于indexPath.row
-    [cell setModelItem:[_titleArray objectAtIndex:indexPath.row]];
-    return cell;
-}
-/*
--(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"HomeCollectionViewCell");
-//    MYCollectionReusableView *supplementaryView = nil;
-    UICollectionReusableView *supplementaryView ;
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader])
-    {
-       supplementaryView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"ReusableView" forIndexPath:indexPath];
-        [supplementaryView addSubview:_scrollView];
-    }
-
-    return supplementaryView;
-}
- */
-
-#pragma mark --UICollectionViewDelegateFlowLayout
-//https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionViewDelegateFlowLayout_protocol/
-
-//定义每个UICollectionView 的大小
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"collectionviewlayoutdelegate");
-    //4个  5*8 = 40
-    //图片为正方形，边长：(fDeviceWidth-20)/2-5-5 所以总高(fDeviceWidth-20)/2-5-5 +20+30+5+5 label高20 btn高30 边
-//    return CGSizeMake((kMainScreenWidth-40)/4, (kMainScreenWidth-40)/4+20);
-    return CGSizeMake(kMainScreenWidth/4, kMainScreenWidth/4);
-}
-
-//定义每个UICollectionView的间距
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(0, 0, 0, 0);
-}
-
-//定义每个UICollectionView 纵向的间距 设定全局的Cell间距，如果想要设定指定区内Cell的最小间距
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
-}
-//设定全局的行间距，如果想要设定指定区内Cell的最小行距
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
-}
-#pragma mark - UICollectViewDelegate
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    NSLog(@"选择了%ld",indexPath.row);
-//    switch (indexPath.section) {
-//        case 0:
-//
-//            break;
-//        case 1:
-//            break;
-//        default:
-//            break;
-//    }
-}
-
--(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return YES;
-}
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

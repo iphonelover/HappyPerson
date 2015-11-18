@@ -1,9 +1,9 @@
 //
 //  MySearchBar.h
-//  CardWise
+//  HappyPerson
 //
-//  Created by yulong on 14-4-14.
-//  Copyright (c) 2014年 CDG. All rights reserved.
+//  Created by wei on 15/6/20.
+//  Copyright (c) 2015年 shuji. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

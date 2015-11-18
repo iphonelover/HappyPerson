@@ -26,9 +26,9 @@
         UIColor *titleColor = (ios7 ? [UIColor blackColor]:[UIColor whiteColor]);
         [self setTitleColor:titleColor forState:UIControlStateNormal];
         [self setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
-        if (!ios7) {
-            [self setBackgroundImage:[UIImage imageWithName:@"tabbar_slider"] forState:UIControlStateSelected];
-        }
+//        if (!ios7) {
+//            [self setBackgroundImage:[UIImage imageWithName:@"tabbar_slider"] forState:UIControlStateSelected];
+//        }
     }
     return self;
 }
@@ -48,12 +48,6 @@
     [self setImage:self.item.selectedImage forState:UIControlStateSelected];
 }
 
-- (void)dealloc
-{
-    [self.item removeObserver:self forKeyPath:@"title"];
-    [self.item removeObserver:self forKeyPath:@"image"];
-    [self.item removeObserver:self forKeyPath:@"selectedImage"];
-}
 
 
 

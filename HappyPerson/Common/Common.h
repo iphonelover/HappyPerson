@@ -24,7 +24,7 @@
 
 const static NSString *APIKey = @"f30e6a8cfd37ab9d0133a185fe8ff54e";
 
-
+#define TAGVALUE  10000
 
 
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
