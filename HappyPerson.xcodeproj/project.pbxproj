@@ -88,7 +88,6 @@
 		4AC8C1281BB2F1800051DFEF /* UIView+Masony.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8C1271BB2F1800051DFEF /* UIView+Masony.m */; };
 		4AC8C1311BB2F3120051DFEF /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8C1301BB2F3120051DFEF /* UIView+Additions.m */; };
 		4AC8C1901BB2FA4F0051DFEF /* CityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8C1461BB2FA4F0051DFEF /* CityCell.m */; };
-		4AC8C1911BB2FA4F0051DFEF /* MySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8C1491BB2FA4F0051DFEF /* MySearchBar.m */; };
 		4AC8C1921BB2FA4F0051DFEF /* CitySelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8C14C1BB2FA4F0051DFEF /* CitySelectViewController.m */; };
 		4AC8C1931BB2FA4F0051DFEF /* GuidanceImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8C1501BB2FA4F0051DFEF /* GuidanceImage.m */; };
 		4AC8C19A1BB2FA4F0051DFEF /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8C1631BB2FA4F0051DFEF /* NearbyViewController.m */; };
@@ -273,8 +272,6 @@
 		4AC8C1301BB2F3120051DFEF /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		4AC8C1451BB2FA4F0051DFEF /* CityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCell.h; sourceTree = "<group>"; };
 		4AC8C1461BB2FA4F0051DFEF /* CityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityCell.m; sourceTree = "<group>"; };
-		4AC8C1481BB2FA4F0051DFEF /* MySearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySearchBar.h; sourceTree = "<group>"; };
-		4AC8C1491BB2FA4F0051DFEF /* MySearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySearchBar.m; sourceTree = "<group>"; };
 		4AC8C14B1BB2FA4F0051DFEF /* CitySelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitySelectViewController.h; sourceTree = "<group>"; };
 		4AC8C14C1BB2FA4F0051DFEF /* CitySelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitySelectViewController.m; sourceTree = "<group>"; };
 		4AC8C14F1BB2FA4F0051DFEF /* GuidanceImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidanceImage.h; sourceTree = "<group>"; };
@@ -569,8 +566,6 @@
 		4AC8C1471BB2FA4F0051DFEF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4AC8C1481BB2FA4F0051DFEF /* MySearchBar.h */,
-				4AC8C1491BB2FA4F0051DFEF /* MySearchBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1224,7 +1219,6 @@
 				4A2C1C5E1B647A710037D0F7 /* UIView+WebCacheOperation.m in Sources */,
 				4A3D04581BE9C74A0028CE3B /* UITableView+HPTableView.m in Sources */,
 				4AC8C1A31BB2FA4F0051DFEF /* MyCenterViewController.m in Sources */,
-				4AC8C1911BB2FA4F0051DFEF /* MySearchBar.m in Sources */,
 				4AAC710B1BC65680001BAD9E /* GuidanceScrollView.m in Sources */,
 				4AC8C1A21BB2FA4F0051DFEF /* MyCenterTableCell.m in Sources */,
 				4A3D04441BE8CD720028CE3B /* HPAssistant.m in Sources */,
