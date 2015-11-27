@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "HPTableBarController.h"
+#import "HPNavigationController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -17,7 +18,8 @@
 @property (assign, nonatomic) BOOL locationYES;
 
 @property (nonatomic, assign) CLLocation *currentLocation;
-@property (nonatomic, strong) HPTableBarController *hpTabBarController;
+@property (nonatomic, strong) HPTableBarController *hpTabController;
+@property (nonatomic, strong) HPNavigationController *hpNavController;
 
 
 

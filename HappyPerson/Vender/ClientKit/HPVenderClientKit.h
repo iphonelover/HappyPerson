@@ -12,6 +12,16 @@
 
 +(HPVenderClientKit *)sharedInstance;
 
--(void)getFamousProduct:(NSString *)param success:(void (^)(NSArray *items)) success falure:(void(^)(NSError *error)) falure;
+-(void)getFamousProduct:(NSString *)param withPage:(NSString *)page success:(void (^)(NSDictionary *famousItems))success failure:(void(^)(NSError *error))failure;
 
+
+-(void)getUserNewPreference:(NSString *)param success:(void(^)(NSArray *preferenceItems))success failure:(void(^)(NSError *))failure;
+
+-(void)getFanLife:(NSString *)param success:(void(^)(NSArray *fanLifeItems))success failure:(void(^)(NSError *error))failure;
+
+-(void)getPreformance:(NSString *)param success:(void(^)(NSArray *performanceItems))success failure:(void(^)(NSError *error))failure;
+
+-(void)getHotLine:(NSString *)param success:(void(^)(NSArray *hotlineItems))success failure:(void(^)(NSError *error))failure;
+
+-(void)getRecommand:(NSString *)param success:(void(^)(NSArray *recommandItems))success failure:(void(^)(NSError *error))failure;
 @end

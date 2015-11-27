@@ -7,10 +7,13 @@
 //
 
 #import "HPFamousTableCell.h"
+#import "HPFamousModel.h"
 
 @interface HPFamousTableCell ()
 
 @property (nonatomic, strong) NSArray *array;
+
+@property (nonatomic, strong) NSArray *cellFamousArray;
 
 @end
 
@@ -92,12 +95,10 @@
 
 -(void)setModel:(id)item
 {
-    
-}
-
--(id)getItem
-{
-    return nil;
+    _cellFamousArray = item;
+    for (int i=0; i<[_cellFamousArray count]; i++) {
+        
+    }
 }
 
 -(void)tapView:(UITapGestureRecognizer *)tapGesture

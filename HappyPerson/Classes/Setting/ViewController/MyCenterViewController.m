@@ -152,7 +152,7 @@
     
     
     SetViewController *setSubVC = [[SetViewController alloc] init];
-    [self.navigationController pushViewController:setSubVC animated:YES];
+    [ApplicationDelegate.hpNavController pushViewController:setSubVC animated:YES];
 //    switch (indexPath.section) {
 //        case 0:
 //            switch (indexPath.row) {

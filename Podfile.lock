@@ -41,6 +41,8 @@ PODS:
   - Mantle/extobjc (2.0.2)
   - Masonry (0.6.2)
   - MBProgressHUD (0.9.1)
+  - MJExtension (2.5.16)
+  - MJRefresh (3.0.4)
   - pop (1.0.7)
   - Reachability (3.2)
   - ReactiveCocoa (2.5):
@@ -50,7 +52,6 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SKStatefulTableViewController (0.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
@@ -59,10 +60,11 @@ DEPENDENCIES:
   - Mantle (~> 2.0.2)
   - Masonry (~> 0.6.2)
   - MBProgressHUD (~> 0.9.1)
+  - MJExtension (~> 2.5.16)
+  - MJRefresh (~> 3.0.4)
   - pop (~> 1.0.7)
   - Reachability (~> 3.2)
   - ReactiveCocoa
-  - SKStatefulTableViewController (~> 0.1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
@@ -71,9 +73,10 @@ SPEC CHECKSUMS:
   Mantle: 967fd31ea0220890b2e76589198996b534bb3fb1
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MJExtension: b8c1321a77d91bcc007b94d38cbf5383c95ea30e
+  MJRefresh: c95f0d541606ef584dab3fbeda28f4f32b4aca6e
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SKStatefulTableViewController: d43ecdc4ca5d68c9cb70c94f9a7b3b84895540f0
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.39.0

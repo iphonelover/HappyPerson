@@ -13,6 +13,7 @@
 #import "UIView+Additions.h"
 #import "UIView+Masony.h"
 #import "AppDelegate.h"
+#import <AFNetworking.h>
 
 
 
@@ -26,6 +27,13 @@ const static NSString *APIKey = @"f30e6a8cfd37ab9d0133a185fe8ff54e";
 
 #define TAGVALUE  10000
 
+typedef void (^HPSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject);
+typedef void (^HPFailureBlock)(AFHTTPRequestOperation *operation, NSError *error);
+
+typedef void(^HPResponseSuccessBlock)(id responseData);
+typedef void(^HPResponseFailureBlock)(NSError *error);
+
+static NSString * const kStartPageCount = 0;
 
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 

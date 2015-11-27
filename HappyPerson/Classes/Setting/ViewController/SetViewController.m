@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ApplicationDelegate.hpTabBarController.customTabBar.hidden = YES;
+    ApplicationDelegate.hpTabController.customTabBar.hidden = YES;
 
     // Do any additional setup after loading the view.
     [self setNaviBarTitle:@"设置"];
@@ -48,7 +48,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    ApplicationDelegate.hpTabBarController.customTabBar.hidden = NO;
+    ApplicationDelegate.hpTabController.customTabBar.hidden = NO;
 }
 
 -(void)backAction

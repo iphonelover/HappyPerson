@@ -22,6 +22,8 @@
 
 #import "GuidanceImage.h"
 #import "GuidanceViewController.h"
+#import "MyCenterViewController.h"
+#import "MessageViewController.h"
 
 //定位tag
 #define LOCATION_AGAIN_TAG 5000
@@ -58,6 +60,23 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     
+    _hpTabController = [[HPTableBarController alloc] init];
+    MainViewController *life = [[MainViewController alloc]init];
+    NearbyViewController *news = [[NearbyViewController alloc]init];
+//    news.view.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
+    MessageViewController *msg = [[MessageViewController alloc] init];
+    MyCenterViewController *mys = [[MyCenterViewController alloc] init];
+    
+    [_hpTabController setViewControllers:@[life,news,msg,mys]];
+    
+    [self addChildViewControl:life title:@"首页" imageName:@"tabbar_home_os7" selectedImageName:@"tabbar_home_selected_os7"];
+    [self addChildViewControl:news title:@"分类" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected"];
+    [self addChildViewControl:msg title:@"消息" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected"];
+    [self addChildViewControl:mys title:@"我的" imageName:@"tabbar_profile_os7" selectedImageName:@"tabbar_profile_selected_os7"];
+    
+    
+    
+    
     [self initLocationAction];
 
     
@@ -89,12 +108,24 @@
     return YES;
 }
 
+- (void)addChildViewControl:(CustomViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
+{
+    // 设置标题图片
+    childVc.tabBarItem.title = title;
+    childVc.tabBarItem.image = [UIImage imageWithName:imageName];
+    // 添加到导航控制器
+    
+    // 添加自定义item
+    [_hpTabController.customTabBar addButtonWithItem:childVc.tabBarItem];
+}
+
+
 -(void)enter
 {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kFirstLogined"];
-    _hpTabBarController = [[HPTableBarController alloc] init];
+    _hpNavController = [[HPNavigationController alloc] initWithRootViewController:_hpTabController];
 //    _xwTabBarController.tabBar.hidden = YES;
-    self.window.rootViewController = _hpTabBarController;
+    self.window.rootViewController = _hpNavController;
     
     
 

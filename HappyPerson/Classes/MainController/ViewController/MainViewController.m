@@ -20,6 +20,9 @@
 #import "TableViewCell1.h"
 #import "ScrollViewTableCell.h"
 #import "HPFamousTableCell.h"
+#import "HPFamousResponse.h"
+#import "HPFamousModel.h"
+#import "HPFamousDealsModel.h"
 //#import "GuidanceView.h"
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SDCycleScrollViewDelegate>
 
@@ -40,6 +43,10 @@
 @property (nonatomic, strong) NSArray *imgArray;
 
 @property (nonatomic,strong) NSArray *scrollDataArray;
+@property (nonatomic, strong) HPFamousResponse *hpFamousResponse;
+@property (nonatomic, strong) NSMutableArray *famousArray;
+@property (nonatomic, strong) HPFamousModel *famousModel;
+
 
 
 //城市选择
@@ -54,6 +61,10 @@
 
 
     _scrollDataArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"scrollData" ofType:@"plist"]];
+    
+    _famousArray = [NSMutableArray array];
+    
+//    [];
     //此句隐藏navigationBar
 //    [self hideNaviBar:YES];
 
@@ -64,12 +75,18 @@
 //
 //    }else{
     _imgArray = [NSArray arrayWithObjects:[HPAssistant imageWithContentsOfFile:@"scrolimg1"],[HPAssistant imageWithContentsOfFile:@"scrolimg2"],[HPAssistant imageWithContentsOfFile:@"scrolimg3"], nil];
+    //tableview布局
         [self mineTableView];
-//    }
+    [self refreshTableView];
+    
+    [self setUpFamousResponse];
+   
+    
 
 }
 
 
+#pragma mark - TableView
 
 -(void)mineTableView
 {
@@ -109,7 +126,7 @@
     _cityBtn = [CustomNaviBarView createNormalNaviBarBtnByTitle:ApplicationDelegate.locationCity target:self action:@selector(selectCity:)];
     [self setNaviBarLeftBtn:_cityBtn];
 
-    self.view.backgroundColor = [UIColor redColor];
+//    self.view.backgroundColor = [UIColor redColor];
 }
 
 
@@ -158,9 +175,105 @@
 -(void)click:(id)sender
 {
     MyCenterViewController *v3 = [[MyCenterViewController alloc] init];
-    [self.navigationController pushViewController:v3 animated:YES];
+    [ApplicationDelegate.hpNavController pushViewController:v3 animated:YES];
 
 //    [self pushViewController:v3 animated:YES];
+}
+
+#pragma mark - 下拉刷新 上拉加载更多
+-(void)refreshTableView{
+    __unsafe_unretained __typeof(self) weakSelf = self;
+    
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadNewData];
+    }];
+    
+    // 马上进入刷新状态(自动刷新) 不加此句需要手动下拉刷新
+    [self.tableView.mj_header beginRefreshing];
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    // 设置了底部inset
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
+    // 忽略掉底部inset
+    self.tableView.mj_footer.ignoredScrollViewContentInsetBottom = 0;
+}
+
+#pragma mark 下拉刷新数据
+- (void)loadNewData
+{
+    
+    // 2秒后刷新表格UI,下拉传递的page为第一页0
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 刷新表格
+//        [self.tableView reloadData];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+            //1.加载抢购数据
+            [self loadFamousResponse];
+            //2.加载热门排队数据
+            //        [self loadHotQueueData];
+            //3.加载推荐数据
+//            [self loadRecommentData];
+            //4.加载折扣数据
+//            [self loadDiscountData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //这个里面是主线程要做的事  可以刷新UI
+                //由于数据是临时的所以刷新在每次请求里完成
+            });
+        });
+        
+        // 拿到当前的下拉刷新控件，结束刷新状态
+        [self.tableView.mj_header endRefreshing];
+    });
+}
+
+#pragma mark 上拉加载更多数据,现在上方方法里请求数据
+- (void)loadMoreData
+{
+     //2秒后刷新表格UI,上拉传递的page为currentpage+1;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 刷新表格
+        [self.tableView reloadData];
+        
+        // 拿到当前的上拉刷新控件，结束刷新状态
+        [self.tableView.mj_footer endRefreshing];
+    });
+}
+
+#pragma mark - 调用接口
+-(void)loadFamousResponse
+{
+    if (self.hpFamousResponse) {
+        self.hpFamousResponse.currentPage = kStartPageCount;
+        [self.hpFamousResponse loadNetData];
+    }
+}
+
+
+#pragma mark - 获取数据后的处理方法
+
+-(void)setUpFamousResponse
+{
+    if (!_hpFamousResponse) {
+        _hpFamousResponse = [[HPFamousResponse alloc] init];
+        
+        WS(ws);
+        _hpFamousResponse.responseSuccessBlock = ^(id responseData){
+            if ([responseData isKindOfClass:[NSDictionary class]]) {
+                if ([responseData count] > 0) {
+                     _famousModel = [HPFamousModel objectWithKeyValues:responseData];
+                    //下拉需要，上拉不需要这一步
+                    [ws.famousArray removeAllObjects];
+                    for (int i = 0; i < [_famousModel.deals count]; i++) {
+                        HPFamousDealsModel *famousDealsModel = [HPFamousDealsModel objectWithKeyValues:ws.famousModel.deals[i]];
+                        [ws.famousArray addObject:famousDealsModel];
+                    }
+                    [ws.tableView reloadData];
+                    
+                }
+            }
+        };
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -195,11 +308,19 @@
 {
     switch (indexPath.section) {
         case 0:{
-            return 180.f;
+            if ([_scrollDataArray count]>0) {
+                return 180.f;
+            }else{
+                return 0.f;
+            }
             break;
         }
         case 1:{
-            return 120.f;
+            if ([_famousArray count]>0) {
+                return 120.f;
+            }else{
+            return 0.0f;
+            }
             break;
         }
 //        case 2:{
@@ -298,6 +419,7 @@
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"跳转" message:@"跳转到下一页" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alert show];
             };
+            [famousCell setModel:_famousArray];
             return famousCell;
             break;
         }

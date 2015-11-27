@@ -28,7 +28,7 @@
         }
     }
     
-    ApplicationDelegate.hpTabBarController.customTabBar.hidden = NO;
+    ApplicationDelegate.hpTabController.customTabBar.hidden = NO;
     
 }
 
@@ -45,7 +45,7 @@
     
     
     // 初始化所以子控制器
-    [self setupAllChildViewControls];
+//    [self setupAllChildViewControls];
 }
 
 
