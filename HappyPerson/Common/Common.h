@@ -30,6 +30,10 @@ const static NSString *APIKey = @"f30e6a8cfd37ab9d0133a185fe8ff54e";
 typedef void (^HPSuccessBlock)(AFHTTPRequestOperation *operation, id responseObject);
 typedef void (^HPFailureBlock)(AFHTTPRequestOperation *operation, NSError *error);
 
+
+typedef void (^HPSessionSuccessBlock)(NSURLSessionDataTask *task, id responseObject);
+typedef void (^HPSessionFailureBlock)(NSURLSessionDataTask *task, NSError *error);
+
 typedef void(^HPResponseSuccessBlock)(id responseData);
 typedef void(^HPResponseFailureBlock)(NSError *error);
 

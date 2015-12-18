@@ -23,6 +23,12 @@
 #import "HPFamousResponse.h"
 #import "HPFamousModel.h"
 #import "HPFamousDealsModel.h"
+#import "HPUserNewResponse.h"
+#import "HPUserNewArraysModel.h"
+#import "HPFansLifeResponse.h"
+#import "HPPreformanceResponse.h"
+#import "HPHotLineResponse.h"
+#import "HPRecommandResponse.h"
 //#import "GuidanceView.h"
 @interface MainViewController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SDCycleScrollViewDelegate>
 
@@ -44,8 +50,14 @@
 
 @property (nonatomic,strong) NSArray *scrollDataArray;
 @property (nonatomic, strong) HPFamousResponse *hpFamousResponse;
+@property (nonatomic, strong) HPUserNewResponse *hpUserNewResponse;
+@property (nonatomic, strong) HPFansLifeResponse *hpFansLifeResponse;
+@property (nonatomic, strong) HPPreformanceResponse *hpPreformanceResponse;
+@property (nonatomic, strong) HPHotLineResponse *hpHotLineResponse;
+@property (nonatomic, strong) HPRecommandResponse *hpRecommadResponse;
 @property (nonatomic, strong) NSMutableArray *famousArray;
 @property (nonatomic, strong) HPFamousModel *famousModel;
+@property (nonatomic, strong) NSMutableArray *userNewArray;
 
 
 
@@ -63,6 +75,7 @@
     _scrollDataArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"scrollData" ofType:@"plist"]];
     
     _famousArray = [NSMutableArray array];
+    _userNewArray = [NSMutableArray array];
     
 //    [];
     //此句隐藏navigationBar
@@ -112,7 +125,7 @@
     NSLog(@"locationCity is %@",ApplicationDelegate.locationCity);
     [self setNaviBarTitle:@"生活"];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight-64)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, kMainScreenWidth, kMainScreenHeight-44)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -186,7 +199,7 @@
     
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf loadNewData];
+        [weakSelf switchResponseloadNewData];
     }];
     
     // 马上进入刷新状态(自动刷新) 不加此句需要手动下拉刷新
@@ -200,7 +213,7 @@
 }
 
 #pragma mark 下拉刷新数据
-- (void)loadNewData
+- (void)switchResponseloadNewData
 {
     
     // 2秒后刷新表格UI,下拉传递的page为第一页0
@@ -210,12 +223,15 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
             //1.加载抢购数据
             [self loadFamousResponse];
-            //2.加载热门排队数据
-            //        [self loadHotQueueData];
-            //3.加载推荐数据
-//            [self loadRecommentData];
-            //4.加载折扣数据
-//            [self loadDiscountData];
+            
+            //2.加载新用户数据
+            [self loadUserNewResponse];
+            
+            //3.Fan式生活
+            
+            //4.演出赛事
+            //5.推荐
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 //这个里面是主线程要做的事  可以刷新UI
                 //由于数据是临时的所以刷新在每次请求里完成
@@ -240,18 +256,32 @@
     });
 }
 
-#pragma mark - 调用接口
+#pragma mark - 调用请求数据接口
 -(void)loadFamousResponse
 {
     if (self.hpFamousResponse) {
         self.hpFamousResponse.currentPage = kStartPageCount;
-        [self.hpFamousResponse loadNetData];
+        [self.hpFamousResponse loadNewData];
+    }
+}
+
+-(void)loadUserNewResponse
+{
+    if (self.hpUserNewResponse) {
+        [self.hpUserNewResponse loadNewData];
+    }
+}
+
+-(void)loadFansLifeResponse
+{
+    if (self.hpFansLifeResponse) {
+//        [self];
     }
 }
 
 
 #pragma mark - 获取数据后的处理方法
-
+#pragma famous
 -(void)setUpFamousResponse
 {
     if (!_hpFamousResponse) {
@@ -270,6 +300,28 @@
                     }
                     [ws.tableView reloadData];
                     
+                }
+            }
+        };
+    }
+}
+
+#pragma userNewPreference
+
+-(void)setUpUserNewPreference
+{
+    if (!_hpUserNewResponse) {
+        _hpUserNewResponse = [[HPUserNewResponse alloc] init];
+        WS(ws);
+        _hpUserNewResponse.responseSuccessBlock = ^(id responseData){
+            if ([responseData isKindOfClass:[NSArray class]]) {
+                if ([responseData count]>0) {
+                    [ws.userNewArray removeAllObjects];
+                    for (int i = 0; i<[responseData count]; i++) {
+                        HPUserNewArraysModel *userNewArrayModel = responseData[i];
+                        [ws.userNewArray addObject:userNewArrayModel];
+                    }
+                    [ws.tableView reloadData];
                 }
             }
         };

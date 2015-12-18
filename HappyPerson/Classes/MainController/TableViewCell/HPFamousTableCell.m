@@ -8,6 +8,7 @@
 
 #import "HPFamousTableCell.h"
 #import "HPFamousModel.h"
+#import "HPFamousDealsModel.h"
 
 @interface HPFamousTableCell ()
 
@@ -37,7 +38,7 @@
         // imagViewAndLabel
         for (int i = 0; i < 3; i++) {
             //UIImageView和UILabel的背景
-            UIView *backgroundView = [UIView new];
+            UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(i*kMainScreenWidth/3, 40, (kMainScreenWidth-3)/3, 80)];
             backgroundView.tag = TAGVALUE+10+i;
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
             [backgroundView addGestureRecognizer:tap];
@@ -46,6 +47,7 @@
             //上方的UIImageView
             UIImageView *topImageView = [UIImageView new];
             topImageView.tag = TAGVALUE+20+i;
+//            topImageView.backgroundColor = [UIColor yellowColor];
             topImageView.contentMode = UIViewContentModeScaleAspectFit;
             [backgroundView addSubview:topImageView];
             
@@ -97,7 +99,24 @@
 {
     _cellFamousArray = item;
     for (int i=0; i<[_cellFamousArray count]; i++) {
+        HPFamousDealsModel *famousDealModel = _cellFamousArray[i];
+        NSString *topimageURL = famousDealModel.mdcLogoUrl;
+        UIImageView *topIV = (UIImageView *)[self viewWithTag:TAGVALUE+20+i];
+        [topIV sd_setImageWithURL:[NSURL URLWithString:topimageURL] placeholderImage:nil];
         
+        NSInteger neswPrice = [famousDealModel.campaignprice integerValue];
+        UILabel *neswPriceLabel = (UILabel *)[self viewWithTag:TAGVALUE+30+i];
+        neswPriceLabel.text = [NSString stringWithFormat:@"%ld元",(long)neswPrice];
+        
+        NSInteger oldPrice = [famousDealModel.price integerValue];
+        UILabel *oldPriceLabel = (UILabel *)[self viewWithTag:TAGVALUE+40+i];
+        NSString *oldPriceStr = [NSString stringWithFormat:@"%ld元",(long)oldPrice];
+        
+        NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+        
+        //下划线
+        NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:oldPriceStr attributes:attribtDic];
+        oldPriceLabel.attributedText = attribtStr;
     }
 }
 

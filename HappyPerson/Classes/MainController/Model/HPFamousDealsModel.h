@@ -33,9 +33,9 @@
 @property (nonatomic, strong) NSString *mdcLogoUrl;
 @property (nonatomic, strong) NSString *smstitle;
 @property (nonatomic, strong) NSNumber *ctype;
-@property (nonatomic, strong) NSArray *campaigns;
+@property (nonatomic, strong) NSArray  *campaigns;
 @property (nonatomic, strong) NSString *subcate;
-@property (nonatomic, strong) NSArray *attrJson;
+@property (nonatomic, strong) NSArray  *attrJson;
 @property (nonatomic, strong) NSNumber *price;
 @property (nonatomic, strong) NSNumber *rating;
 @property (nonatomic, strong) NSString *channel;

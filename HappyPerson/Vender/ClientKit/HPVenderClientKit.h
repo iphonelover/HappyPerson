@@ -15,11 +15,11 @@
 -(void)getFamousProduct:(NSString *)param withPage:(NSString *)page success:(void (^)(NSDictionary *famousItems))success failure:(void(^)(NSError *error))failure;
 
 
--(void)getUserNewPreference:(NSString *)param success:(void(^)(NSArray *preferenceItems))success failure:(void(^)(NSError *))failure;
+-(void)getUserNewPreference:(NSString *)param success:(void(^)(NSArray *preferenceItems))success failure:(void(^)(NSError * error))failure;
 
--(void)getFanLife:(NSString *)param success:(void(^)(NSArray *fanLifeItems))success failure:(void(^)(NSError *error))failure;
+-(void)getFanLife:(NSString *)param success:(void(^)(NSDictionary *fanLifeItems))success failure:(void(^)(NSError *error))failure;
 
--(void)getPreformance:(NSString *)param success:(void(^)(NSArray *performanceItems))success failure:(void(^)(NSError *error))failure;
+-(void)getPreformance:(NSString *)param success:(void(^)(NSDictionary *performanceItems))success failure:(void(^)(NSError *error))failure;
 
 -(void)getHotLine:(NSString *)param success:(void(^)(NSArray *hotlineItems))success failure:(void(^)(NSError *error))failure;
 

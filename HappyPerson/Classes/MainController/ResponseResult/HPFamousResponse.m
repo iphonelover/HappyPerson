@@ -11,7 +11,7 @@
 @implementation HPFamousResponse
 
 //正式接口需要在后面添加参数
--(void)loadNetData
+-(void)loadNewData
 {
     
     [[HPVenderClientKit sharedInstance] getFamousProduct:nil withPage:nil  success:^(NSDictionary *famousItems) {

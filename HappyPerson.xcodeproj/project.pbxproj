@@ -72,6 +72,19 @@
 		4A489E1F1B64A347002E3F20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A489E1E1B64A347002E3F20 /* UIKit.framework */; };
 		4A489E2D1B64BEDC002E3F20 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A489E2C1B64BEDC002E3F20 /* AMapSearchKit.framework */; };
 		4A489E2F1B64DEC3002E3F20 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A489E2E1B64DEC3002E3F20 /* AMap.bundle */; };
+		4A4EC5091C0DA3AD00D2D634 /* HPSessionClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC5081C0DA3AC00D2D634 /* HPSessionClient.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC50C1C0DAD5500D2D634 /* HPUserNewResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC50B1C0DAD5500D2D634 /* HPUserNewResponse.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC50F1C0DB12900D2D634 /* HPUserNewArraysModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC50E1C0DB12900D2D634 /* HPUserNewArraysModel.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC5121C0EE49000D2D634 /* HPFansLifeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC5111C0EE49000D2D634 /* HPFansLifeResponse.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC5151C0EE4B800D2D634 /* HPPreformanceResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC5141C0EE4B800D2D634 /* HPPreformanceResponse.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC5181C0EE4E100D2D634 /* HPHotLineResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC5171C0EE4E100D2D634 /* HPHotLineResponse.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC51B1C0EE4FD00D2D634 /* HPRecommandResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC51A1C0EE4FD00D2D634 /* HPRecommandResponse.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC51E1C0EE5DC00D2D634 /* HPFansLifeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC51D1C0EE5DC00D2D634 /* HPFansLifeModel.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC5211C0EE5F400D2D634 /* HPFansLifeArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC5201C0EE5F400D2D634 /* HPFansLifeArrayModel.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC5241C0EE7F900D2D634 /* HPPreformanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC5231C0EE7F900D2D634 /* HPPreformanceModel.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC5271C0EE81500D2D634 /* HPPreformanceArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC5261C0EE81500D2D634 /* HPPreformanceArrayModel.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC52A1C0EF0D300D2D634 /* HPHotLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC5291C0EF0D300D2D634 /* HPHotLineModel.m */; settings = {ASSET_TAGS = (); }; };
+		4A4EC52D1C0EF10900D2D634 /* HPRecommandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4EC52C1C0EF10900D2D634 /* HPRecommandModel.m */; settings = {ASSET_TAGS = (); }; };
 		4A7A5FB51BF1FB27008044EE /* HPButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A5FB41BF1FB27008044EE /* HPButtonView.m */; settings = {ASSET_TAGS = (); }; };
 		4A7A60301BF30F85008044EE /* HPFamousTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7A602F1BF30F85008044EE /* HPFamousTableCell.m */; settings = {ASSET_TAGS = (); }; };
 		4AAC71001BBA835E001BAD9E /* GuidanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC70FF1BBA835E001BAD9E /* GuidanceView.m */; };
@@ -281,6 +294,32 @@
 		4A489E1E1B64A347002E3F20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4A489E2C1B64BEDC002E3F20 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		4A489E2E1B64DEC3002E3F20 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = MAMapKit.framework/Versions/2.5.0.ce99742/Resources/AMap.bundle; sourceTree = "<group>"; };
+		4A4EC5071C0DA3AC00D2D634 /* HPSessionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPSessionClient.h; sourceTree = "<group>"; };
+		4A4EC5081C0DA3AC00D2D634 /* HPSessionClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSessionClient.m; sourceTree = "<group>"; };
+		4A4EC50A1C0DAD5400D2D634 /* HPUserNewResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPUserNewResponse.h; sourceTree = "<group>"; };
+		4A4EC50B1C0DAD5500D2D634 /* HPUserNewResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPUserNewResponse.m; sourceTree = "<group>"; };
+		4A4EC50D1C0DB12900D2D634 /* HPUserNewArraysModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPUserNewArraysModel.h; sourceTree = "<group>"; };
+		4A4EC50E1C0DB12900D2D634 /* HPUserNewArraysModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPUserNewArraysModel.m; sourceTree = "<group>"; };
+		4A4EC5101C0EE49000D2D634 /* HPFansLifeResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPFansLifeResponse.h; sourceTree = "<group>"; };
+		4A4EC5111C0EE49000D2D634 /* HPFansLifeResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPFansLifeResponse.m; sourceTree = "<group>"; };
+		4A4EC5131C0EE4B800D2D634 /* HPPreformanceResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPPreformanceResponse.h; sourceTree = "<group>"; };
+		4A4EC5141C0EE4B800D2D634 /* HPPreformanceResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPPreformanceResponse.m; sourceTree = "<group>"; };
+		4A4EC5161C0EE4E100D2D634 /* HPHotLineResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPHotLineResponse.h; sourceTree = "<group>"; };
+		4A4EC5171C0EE4E100D2D634 /* HPHotLineResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPHotLineResponse.m; sourceTree = "<group>"; };
+		4A4EC5191C0EE4FD00D2D634 /* HPRecommandResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPRecommandResponse.h; sourceTree = "<group>"; };
+		4A4EC51A1C0EE4FD00D2D634 /* HPRecommandResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPRecommandResponse.m; sourceTree = "<group>"; };
+		4A4EC51C1C0EE5DC00D2D634 /* HPFansLifeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPFansLifeModel.h; sourceTree = "<group>"; };
+		4A4EC51D1C0EE5DC00D2D634 /* HPFansLifeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPFansLifeModel.m; sourceTree = "<group>"; };
+		4A4EC51F1C0EE5F400D2D634 /* HPFansLifeArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPFansLifeArrayModel.h; sourceTree = "<group>"; };
+		4A4EC5201C0EE5F400D2D634 /* HPFansLifeArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPFansLifeArrayModel.m; sourceTree = "<group>"; };
+		4A4EC5221C0EE7F900D2D634 /* HPPreformanceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPPreformanceModel.h; sourceTree = "<group>"; };
+		4A4EC5231C0EE7F900D2D634 /* HPPreformanceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPPreformanceModel.m; sourceTree = "<group>"; };
+		4A4EC5251C0EE81500D2D634 /* HPPreformanceArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPPreformanceArrayModel.h; sourceTree = "<group>"; };
+		4A4EC5261C0EE81500D2D634 /* HPPreformanceArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPPreformanceArrayModel.m; sourceTree = "<group>"; };
+		4A4EC5281C0EF0D300D2D634 /* HPHotLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPHotLineModel.h; sourceTree = "<group>"; };
+		4A4EC5291C0EF0D300D2D634 /* HPHotLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPHotLineModel.m; sourceTree = "<group>"; };
+		4A4EC52B1C0EF10900D2D634 /* HPRecommandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPRecommandModel.h; sourceTree = "<group>"; };
+		4A4EC52C1C0EF10900D2D634 /* HPRecommandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPRecommandModel.m; sourceTree = "<group>"; };
 		4A7A5FB31BF1FB27008044EE /* HPButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPButtonView.h; sourceTree = "<group>"; };
 		4A7A5FB41BF1FB27008044EE /* HPButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPButtonView.m; sourceTree = "<group>"; };
 		4A7A602E1BF30F85008044EE /* HPFamousTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPFamousTableCell.h; sourceTree = "<group>"; };
@@ -951,6 +990,20 @@
 				4ADEA0791BFEFA1500983404 /* HPFamousModel.m */,
 				4ADEA0821BFF308100983404 /* HPFamousDealsModel.h */,
 				4ADEA0831BFF308100983404 /* HPFamousDealsModel.m */,
+				4A4EC50D1C0DB12900D2D634 /* HPUserNewArraysModel.h */,
+				4A4EC50E1C0DB12900D2D634 /* HPUserNewArraysModel.m */,
+				4A4EC51C1C0EE5DC00D2D634 /* HPFansLifeModel.h */,
+				4A4EC51D1C0EE5DC00D2D634 /* HPFansLifeModel.m */,
+				4A4EC51F1C0EE5F400D2D634 /* HPFansLifeArrayModel.h */,
+				4A4EC5201C0EE5F400D2D634 /* HPFansLifeArrayModel.m */,
+				4A4EC5221C0EE7F900D2D634 /* HPPreformanceModel.h */,
+				4A4EC5231C0EE7F900D2D634 /* HPPreformanceModel.m */,
+				4A4EC5251C0EE81500D2D634 /* HPPreformanceArrayModel.h */,
+				4A4EC5261C0EE81500D2D634 /* HPPreformanceArrayModel.m */,
+				4A4EC5281C0EF0D300D2D634 /* HPHotLineModel.h */,
+				4A4EC5291C0EF0D300D2D634 /* HPHotLineModel.m */,
+				4A4EC52B1C0EF10900D2D634 /* HPRecommandModel.h */,
+				4A4EC52C1C0EF10900D2D634 /* HPRecommandModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -960,6 +1013,16 @@
 			children = (
 				4ADEA07C1BFF135E00983404 /* HPFamousResponse.h */,
 				4ADEA07D1BFF135E00983404 /* HPFamousResponse.m */,
+				4A4EC50A1C0DAD5400D2D634 /* HPUserNewResponse.h */,
+				4A4EC50B1C0DAD5500D2D634 /* HPUserNewResponse.m */,
+				4A4EC5101C0EE49000D2D634 /* HPFansLifeResponse.h */,
+				4A4EC5111C0EE49000D2D634 /* HPFansLifeResponse.m */,
+				4A4EC5131C0EE4B800D2D634 /* HPPreformanceResponse.h */,
+				4A4EC5141C0EE4B800D2D634 /* HPPreformanceResponse.m */,
+				4A4EC5161C0EE4E100D2D634 /* HPHotLineResponse.h */,
+				4A4EC5171C0EE4E100D2D634 /* HPHotLineResponse.m */,
+				4A4EC5191C0EE4FD00D2D634 /* HPRecommandResponse.h */,
+				4A4EC51A1C0EE4FD00D2D634 /* HPRecommandResponse.m */,
 			);
 			path = ResponseResult;
 			sourceTree = "<group>";
@@ -1115,6 +1178,8 @@
 				4AF866081BF497AF00205F3A /* HPVenderClientKit.m */,
 				4AF8660A1BF499F400205F3A /* HPRequestClient.h */,
 				4AF8660B1BF499F400205F3A /* HPRequestClient.m */,
+				4A4EC5071C0DA3AC00D2D634 /* HPSessionClient.h */,
+				4A4EC5081C0DA3AC00D2D634 /* HPSessionClient.m */,
 			);
 			path = ClientKit;
 			sourceTree = "<group>";
@@ -1373,18 +1438,24 @@
 				4AC8C1281BB2F1800051DFEF /* UIView+Masony.m in Sources */,
 				4A3D04411BE8CA210028CE3B /* UIView+SDExtension.m in Sources */,
 				4A3D043D1BE8CA210028CE3B /* TADotView.m in Sources */,
+				4A4EC5091C0DA3AD00D2D634 /* HPSessionClient.m in Sources */,
 				4A2C1C571B647A710037D0F7 /* SDWebImageManager.m in Sources */,
 				4AC8C1221BB2F10D0051DFEF /* UIImage+WB.m in Sources */,
 				4AC8C1211BB2F10D0051DFEF /* NSString+Additions.m in Sources */,
 				4A2C1C5C1B647A710037D0F7 /* UIImageView+HighlightedWebCache.m in Sources */,
 				4A7A60301BF30F85008044EE /* HPFamousTableCell.m in Sources */,
+				4A4EC50F1C0DB12900D2D634 /* HPUserNewArraysModel.m in Sources */,
 				4A2C1C581B647A710037D0F7 /* SDWebImagePrefetcher.m in Sources */,
 				4AF8660C1BF499F400205F3A /* HPRequestClient.m in Sources */,
 				4A3D04401BE8CA210028CE3B /* SDCycleScrollView.m in Sources */,
+				4A4EC52A1C0EF0D300D2D634 /* HPHotLineModel.m in Sources */,
 				4ACD019D1B5CE3470090AC4F /* AdDataModel.m in Sources */,
 				4AC8C1A11BB2FA4F0051DFEF /* MessageViewController.m in Sources */,
 				4AC8C1311BB2F3120051DFEF /* UIView+Additions.m in Sources */,
+				4A4EC5241C0EE7F900D2D634 /* HPPreformanceModel.m in Sources */,
 				4AC8C1C31BB2FAD70051DFEF /* HPTableBarController.m in Sources */,
+				4A4EC5181C0EE4E100D2D634 /* HPHotLineResponse.m in Sources */,
+				4A4EC52D1C0EF10900D2D634 /* HPRecommandModel.m in Sources */,
 				4A3D043A1BE8CA210028CE3B /* NSData+SDDataCache.m in Sources */,
 				4A2C1C4C1B647A710037D0F7 /* KeychainItemWrapper.m in Sources */,
 				4A2C1C551B647A710037D0F7 /* SDWebImageDownloader.m in Sources */,
@@ -1408,10 +1479,13 @@
 				4AC8C1A71BB2FA4F0051DFEF /* HPTabBar.m in Sources */,
 				4A2C1C511B647A710037D0F7 /* NSData+ImageContentType.m in Sources */,
 				4AC8C19A1BB2FA4F0051DFEF /* NearbyViewController.m in Sources */,
+				4A4EC5121C0EE49000D2D634 /* HPFansLifeResponse.m in Sources */,
 				4ADEA07A1BFEFA1500983404 /* HPFamousModel.m in Sources */,
 				4A2C1C591B647A710037D0F7 /* UIButton+WebCache.m in Sources */,
 				4AC8C1BF1BB2FAD70051DFEF /* CustomViewController.m in Sources */,
+				4A4EC50C1C0DAD5500D2D634 /* HPUserNewResponse.m in Sources */,
 				4A7A5FB51BF1FB27008044EE /* HPButtonView.m in Sources */,
+				4A4EC5271C0EE81500D2D634 /* HPPreformanceArrayModel.m in Sources */,
 				4AC8C19E1BB2FA4F0051DFEF /* MYCollectionReusableView.m in Sources */,
 				4A489DD91B649311002E3F20 /* MYBaseObject.m in Sources */,
 				4AC8C1931BB2FA4F0051DFEF /* GuidanceImage.m in Sources */,
@@ -1424,7 +1498,9 @@
 				4ACD01591B5C95150090AC4F /* UIColor+Additions.m in Sources */,
 				4ACD01981B5CE2360090AC4F /* AdView.m in Sources */,
 				4AAC71081BC65480001BAD9E /* GuidanceViewController.m in Sources */,
+				4A4EC51B1C0EE4FD00D2D634 /* HPRecommandResponse.m in Sources */,
 				4AC8C19F1BB2FA4F0051DFEF /* MYCollectionView.m in Sources */,
+				4A4EC5151C0EE4B800D2D634 /* HPPreformanceResponse.m in Sources */,
 				4AC8C19D1BB2FA4F0051DFEF /* MainViewController.m in Sources */,
 				4AEFA7BB1BFECAE100FAC60F /* HPRequestURL.m in Sources */,
 				4A3D043B1BE8CA210028CE3B /* TAAbstractDotView.m in Sources */,
@@ -1435,6 +1511,8 @@
 				4AC8C1A31BB2FA4F0051DFEF /* MyCenterViewController.m in Sources */,
 				4ADEA07E1BFF135E00983404 /* HPFamousResponse.m in Sources */,
 				4AAC710B1BC65680001BAD9E /* GuidanceScrollView.m in Sources */,
+				4A4EC51E1C0EE5DC00D2D634 /* HPFansLifeModel.m in Sources */,
+				4A4EC5211C0EE5F400D2D634 /* HPFansLifeArrayModel.m in Sources */,
 				4AC8C1A21BB2FA4F0051DFEF /* MyCenterTableCell.m in Sources */,
 				4A3D04441BE8CD720028CE3B /* HPAssistant.m in Sources */,
 				4A2C1C5B1B647A710037D0F7 /* UIImage+MultiFormat.m in Sources */,
@@ -1565,7 +1643,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 王 (P5C5X33BDQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1583,9 +1661,9 @@
 					"$(PROJECT_DIR)/HappyPerson/Vendor/WeChatSDK_1.4.2.1",
 					"$(PROJECT_DIR)/HappyPerson/Vendor/XinGe",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.116.iphone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuji.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4bb34d4-3572-4bbd-aa0e-c3fac764ea94";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1595,7 +1673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 王 (P5C5X33BDQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1613,9 +1691,9 @@
 					"$(PROJECT_DIR)/HappyPerson/Vendor/WeChatSDK_1.4.2.1",
 					"$(PROJECT_DIR)/HappyPerson/Vendor/XinGe",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.116.iphone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shuji.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4bb34d4-3572-4bbd-aa0e-c3fac764ea94";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

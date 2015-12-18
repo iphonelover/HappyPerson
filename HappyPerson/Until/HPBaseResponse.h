@@ -15,6 +15,6 @@
 @property (nonatomic, copy) NSString *currentPage;
 @property (nonatomic, strong) id responseData;
 
--(void)loadNetData;
+-(void)loadNewData;
 
 @end

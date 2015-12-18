@@ -29,6 +29,7 @@
 #import "MJRefresh.h"
 #import "HPBaseResponse.h"
 #import "HPVenderClientKit.h"
+#import "UIImageView+WebCache.h"
 
 
 /*

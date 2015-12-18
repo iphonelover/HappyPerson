@@ -12,6 +12,8 @@
 #import "NSString+Additions.h"
 #import "HPFamousModel.h"
 
+#import "HPSessionClient.h"
+
 @implementation HPVenderClientKit
 
 +(HPVenderClientKit *)sharedInstance
@@ -23,7 +25,16 @@
     });
     return clientKitInstance;
 }
-
+/*!
+ *    @brief  HPRequestClient请求方式
+ *
+ *    @param param   <#param description#>
+ *    @param page    <#page description#>
+ *    @param success <#success description#>
+ *    @param failure <#failure description#>
+ *
+ *    @since <#version number#>
+ */
 -(void)getFamousProduct:(NSString *)param withPage:(NSString *)page success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *paramsDic =  [NSMutableDictionary dictionary];
@@ -55,29 +66,186 @@
     [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
     
 }
+ 
+
+/*!
+ *    @brief  AFHTTPSessionManager请求方式
+ *
+ *    @param param   <#param description#>
+ *    @param page    <#page description#>
+ *    @param success <#success description#>
+ *    @param failure <#failure description#>
+ *
+ *    @since <#version number#>
+ 
+-(void)getFamousProduct:(NSString *)param withPage:(NSString *)page success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure{
+    NSMutableDictionary *paramFamous = [NSMutableDictionary dictionary];
+    
+    [NSString emptyStringConvert:&param];
+    [paramFamous setObject:param forKey:@"paramFamous"];
+    
+    HPSessionClient *sessionClient = [[HPSessionClient alloc] init];
+    
+    HPSessionSuccessBlock sessionSuccessBlock = ^(NSURLSessionDataTask *task, id responseObject){
+        NSError *error;
+        if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
+            if (!error) {
+                NSDictionary *dataDic = [responseObject objectForKey:@"data"];
+                success(dataDic);
+            }else{
+                failure(error);
+            }
+        }
+    };
+    HPSessionFailureBlock sessionFailureBlock = ^(NSURLSessionDataTask *task,NSError *error){
+        failure(error);
+    };
+    
+    NSString *url = [[HPRequestURL sharedInstance] famousProductURL];
+    [sessionClient GET:url parameters:nil success:sessionSuccessBlock failure:sessionFailureBlock];
+    
+    
+}
+ */
+
 
 -(void)getUserNewPreference:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
+    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     
+    [NSString emptyStringConvert:&param];
+    [paramsDic setObject:param forKey:@"params1"];
+    
+    HPRequestClient *requestClient = [[HPRequestClient alloc] init];
+    HPSuccessBlock successBlock = ^(AFHTTPRequestOperation *operation,id responseObject){
+        NSError *error;
+        if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
+            if (!error) {
+                NSArray *dataDic = [responseObject objectForKey:@"data"];
+                success(dataDic);
+            }else{
+                failure(error);
+            }
+        }
+    };
+    
+    HPFailureBlock failureBlock = ^(AFHTTPRequestOperation *operation,NSError *error){
+        failure(error);
+    };
+    NSString *url = [[HPRequestURL sharedInstance] userNewPreferenceURL];
+    
+    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
 }
 
--(void)getFanLife:(NSString *)param success:(void (^)(NSArray *))success failure:(id)failure
+-(void)getFanLife:(NSString *)param success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure
 {
+    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     
+    [NSString emptyStringConvert:&param];
+    [paramsDic setObject:param forKey:@"params1"];
+    
+    HPRequestClient *requestClient = [[HPRequestClient alloc] init];
+    HPSuccessBlock successBlock = ^(AFHTTPRequestOperation *operation,id responseObject){
+        NSError *error;
+        if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
+            if (!error) {
+                NSArray *dataDic = [responseObject objectForKey:@"data"];
+                success(dataDic);
+            }else{
+                failure(error);
+            }
+        }
+    };
+    
+    HPFailureBlock failureBlock = ^(AFHTTPRequestOperation *operation,NSError *error){
+        failure(error);
+    };
+    NSString *url = [[HPRequestURL sharedInstance] fanLifeURL];
+    
+    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
 }
 
--(void)getPreformance:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
+-(void)getPreformance:(NSString *)param success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure
 {
+    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     
+    [NSString emptyStringConvert:&param];
+    [paramsDic setObject:param forKey:@"params1"];
+    
+    HPRequestClient *requestClient = [[HPRequestClient alloc] init];
+    HPSuccessBlock successBlock = ^(AFHTTPRequestOperation *operation,id responseObject){
+        NSError *error;
+        if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
+            if (!error) {
+                NSArray *dataDic = [responseObject objectForKey:@"data"];
+                success(dataDic);
+            }else{
+                failure(error);
+            }
+        }
+    };
+    
+    HPFailureBlock failureBlock = ^(AFHTTPRequestOperation *operation,NSError *error){
+        failure(error);
+    };
+    NSString *url = [[HPRequestURL sharedInstance] performanceURL];
+    
+    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
 }
 
 -(void)getHotLine:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
+    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     
+    [NSString emptyStringConvert:&param];
+    [paramsDic setObject:param forKey:@"params1"];
+    
+    HPRequestClient *requestClient = [[HPRequestClient alloc] init];
+    HPSuccessBlock successBlock = ^(AFHTTPRequestOperation *operation,id responseObject){
+        NSError *error;
+        if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
+            if (!error) {
+                NSArray *dataDic = [responseObject objectForKey:@"data"];
+                success(dataDic);
+            }else{
+                failure(error);
+            }
+        }
+    };
+    
+    HPFailureBlock failureBlock = ^(AFHTTPRequestOperation *operation,NSError *error){
+        failure(error);
+    };
+    NSString *url = [[HPRequestURL sharedInstance] hotLineUpURL];
+    
+    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
 }
 
 -(void)getRecommand:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
+    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     
+    [NSString emptyStringConvert:&param];
+    [paramsDic setObject:param forKey:@"params1"];
+    
+    HPRequestClient *requestClient = [[HPRequestClient alloc] init];
+    HPSuccessBlock successBlock = ^(AFHTTPRequestOperation *operation,id responseObject){
+        NSError *error;
+        if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
+            if (!error) {
+                NSArray *dataDic = [responseObject objectForKey:@"data"];
+                success(dataDic);
+            }else{
+                failure(error);
+            }
+        }
+    };
+    
+    HPFailureBlock failureBlock = ^(AFHTTPRequestOperation *operation,NSError *error){
+        failure(error);
+    };
+    NSString *url = [[HPRequestURL sharedInstance] recommandURL];
+    
+    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
 }
 @end
