@@ -56,8 +56,7 @@
     
     
     [_viewNaviBar setBackgroundColor:[UIColor clearColor]];
-    _viewNaviBar.layer.borderWidth = 2.f;
-    _viewNaviBar.layer.borderColor = [UIColor redColor].CGColor;
+//    _viewNaviBar.layer.borderWidth = 2.f;
     //自定义图片
 //    [_viewNaviBar setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"navigationbar_background"]]];
     //自定义颜色

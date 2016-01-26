@@ -22,8 +22,11 @@
 
 #import "GuidanceImage.h"
 #import "GuidanceViewController.h"
+
 #import "MyCenterViewController.h"
-#import "MessageViewController.h"
+#import "MoreViewController.h"
+#import "HomeViewController.h"
+#import "ShopViewController.h"
 
 //定位tag
 #define LOCATION_AGAIN_TAG 5000
@@ -61,18 +64,21 @@
     
     
     _hpTabController = [[HPTableBarController alloc] init];
-    MainViewController *life = [[MainViewController alloc]init];
-    NearbyViewController *news = [[NearbyViewController alloc]init];
-//    news.view.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
-    MessageViewController *msg = [[MessageViewController alloc] init];
-    MyCenterViewController *mys = [[MyCenterViewController alloc] init];
     
-    [_hpTabController setViewControllers:@[life,news,msg,mys]];
+    HomeViewController *home = [[HomeViewController alloc]init];
+    ShopViewController *shop = [[ShopViewController alloc]init];
+    MyCenterViewController *myCenter = [[MyCenterViewController alloc] init];
+    MoreViewController *more = [[MoreViewController alloc] init];
+
     
-    [self addChildViewControl:life title:@"首页" imageName:@"tabbar_home_os7" selectedImageName:@"tabbar_home_selected_os7"];
-    [self addChildViewControl:news title:@"分类" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected"];
-    [self addChildViewControl:msg title:@"消息" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected"];
-    [self addChildViewControl:mys title:@"我的" imageName:@"tabbar_profile_os7" selectedImageName:@"tabbar_profile_selected_os7"];
+    [_hpTabController setViewControllers:@[home,shop,myCenter,more]];
+    
+    
+    
+    [self addChildViewControl:home title:@"团购" imageName:@"icon_tabbar_homepage" selectedImageName:@"icon_tabbar_homepage_selected"];
+    [self addChildViewControl:shop title:@"商家" imageName:@"icon_tabbar_merchant_normal" selectedImageName:@"icon_tabbar_merchant_selected"];
+    [self addChildViewControl:myCenter title:@"我的" imageName:@"icon_tabbar_mine" selectedImageName:@"icon_tabbar_mine_selected"];
+    [self addChildViewControl:more title:@"更多" imageName:@"icon_tabbar_misc" selectedImageName:@"icon_tabbar_misc_selected"];
     
     
     
@@ -112,7 +118,8 @@
 {
     // 设置标题图片
     childVc.tabBarItem.title = title;
-    childVc.tabBarItem.image = [UIImage imageWithName:imageName];
+    childVc.tabBarItem.image = [HPAssistant imageWithContentsOfFile:imageName];
+    childVc.tabBarItem.selectedImage = [HPAssistant imageWithContentsOfFile:selectedImageName];
     // 添加到导航控制器
     
     // 添加自定义item

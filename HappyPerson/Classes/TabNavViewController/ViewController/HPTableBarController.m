@@ -9,10 +9,10 @@
 #import "UIImage+WB.h"
 #import "HPTabBar.h"
 #import "HPNavigationController.h"
-#import "MainViewController.h"
-#import "NearbyViewController.h"
-#import "MyCenterViewController.h"
-#import "MessageViewController.h"
+//#import "MainViewController.h"
+//#import "NearbyViewController.h"
+//#import "MyCenterViewController.h"
+//#import "MessageViewController.h"
 @interface HPTableBarController ()<HPTabbarDekegate>
 
 @end
@@ -67,6 +67,7 @@
     
 }
 
+/*
 - (void)setupAllChildViewControls
 {
     MainViewController *life = [[MainViewController alloc]init];
@@ -75,10 +76,10 @@
     MessageViewController *msg = [[MessageViewController alloc] init];
     MyCenterViewController *mys = [[MyCenterViewController alloc] init];
     
-    [self addChildViewControl:life title:@"首页" imageName:@"tabbar_home_os7" selectedImageName:@"tabbar_home_selected_os7"];
-    [self addChildViewControl:news title:@"分类" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected"];
-    [self addChildViewControl:msg title:@"消息" imageName:@"tabbar_message_center" selectedImageName:@"tabbar_message_center_selected"];
-    [self addChildViewControl:mys title:@"我的" imageName:@"tabbar_profile_os7" selectedImageName:@"tabbar_profile_selected_os7"];
+    [self addChildViewControl:life title:@"团购" imageName:@"icon_tabbar_homepage" selectedImageName:@"icon_tabbar_homepage_selected"];
+    [self addChildViewControl:news title:@"商家" imageName:@"icon_tabbar_merchant_normal" selectedImageName:@"icon_tabbar_merchant_selected"];
+    [self addChildViewControl:msg title:@"我的" imageName:@"icon_tabbar_mine" selectedImageName:@"icon_tabbar_mine_selected"];
+    [self addChildViewControl:mys title:@"更多" imageName:@"icon_tabbar_misc" selectedImageName:@"icon_tabbar_misc_selected"];
     //跳转的时候隐藏系统自带的tabbar
 //    life.hidesBottomBarWhenPushed = YES;
 //    news.hidesBottomBarWhenPushed = YES;
@@ -87,19 +88,20 @@
     
 }
 
-/**
+
  *  添加子控制器
  *
  *  @param childVc           子控制器
  *  @param title             标题
  *  @param imageName         图片
  *  @param selectedImageName 被选中图片
- */
+ 
 - (void)addChildViewControl:(CustomViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
 {
     // 设置标题图片
     childVc.tabBarItem.title = title;
-    childVc.tabBarItem.image = [UIImage imageWithName:imageName];
+    childVc.tabBarItem.image = [HPAssistant imageWithContentsOfFile:imageName];
+    childVc.tabBarItem.selectedImage = [HPAssistant imageWithContentsOfFile:selectedImageName];
     // 添加到导航控制器
     HPNavigationController *childVcNav = [[HPNavigationController alloc]initWithRootViewController:childVc];
     [self addChildViewController:childVcNav];
@@ -108,7 +110,7 @@
     // 添加自定义item
     [self.customTabBar addButtonWithItem:childVc.tabBarItem];
 }
-
+*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

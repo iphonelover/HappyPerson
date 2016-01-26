@@ -52,6 +52,9 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - YYKit (0.9.10):
+    - YYKit/no-arc (= 0.9.10)
+  - YYKit/no-arc (0.9.10)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
@@ -65,6 +68,7 @@ DEPENDENCIES:
   - pop (~> 1.0.7)
   - Reachability (~> 3.2)
   - ReactiveCocoa
+  - YYKit (~> 0.9.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
@@ -78,5 +82,6 @@ SPEC CHECKSUMS:
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  YYKit: c220d01f6fe9fd4b4b379e2dad50fffd2b2ce633
 
 COCOAPODS: 0.39.0

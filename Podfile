@@ -15,3 +15,5 @@ pod 'Reachability', '~> 3.2'
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'MJExtension', '~> 2.5.16'
 pod 'MJRefresh', '~> 3.0.4'
+
+pod 'YYKit', '~> 0.9.7'

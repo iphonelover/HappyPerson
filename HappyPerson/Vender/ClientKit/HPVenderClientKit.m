@@ -137,7 +137,7 @@
     [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
 }
 
--(void)getFanLife:(NSString *)param success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure
+-(void)getFanLife:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     
@@ -149,7 +149,7 @@
         NSError *error;
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
             if (!error) {
-                NSArray *dataDic = [responseObject objectForKey:@"data"];
+                NSArray *dataDic = [[responseObject objectForKey:@"data"] objectForKey:@"topics"];
                 success(dataDic);
             }else{
                 failure(error);
@@ -165,7 +165,7 @@
     [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
 }
 
--(void)getPreformance:(NSString *)param success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure
+-(void)getPerformance:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
 {
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     
@@ -177,7 +177,7 @@
         NSError *error;
         if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
             if (!error) {
-                NSArray *dataDic = [responseObject objectForKey:@"data"];
+                NSArray *dataDic = [[responseObject objectForKey:@"data"] objectForKey:@"topics"];
                 success(dataDic);
             }else{
                 failure(error);

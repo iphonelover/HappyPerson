@@ -7,11 +7,11 @@
 //
 #import <UIKit/UIKit.h>
 #import "HPTabBar.h"
-#import "MainViewController.h"
-#import "NearbyViewController.h"
+//#import "HomeViewController.h"
+//#import "ShopViewController.h"
 @interface HPTableBarController : UITabBarController
 @property (nonatomic, weak) HPTabBar *customTabBar;
-@property (nonatomic, weak) MainViewController *life;
-@property (nonatomic, weak) NearbyViewController *more;
+//@property (nonatomic, weak) HomeViewController *life;
+//@property (nonatomic, weak) ShopViewController *more;
 
 @end

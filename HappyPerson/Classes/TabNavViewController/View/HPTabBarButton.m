@@ -25,7 +25,7 @@
         self.titleLabel.font = [UIFont systemFontOfSize:11];
         UIColor *titleColor = (ios7 ? [UIColor blackColor]:[UIColor whiteColor]);
         [self setTitleColor:titleColor forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+        [self setTitleColor:[UIColor colorWithHexString:@"#36b9af"] forState:UIControlStateSelected];
 //        if (!ios7) {
 //            [self setBackgroundImage:[UIImage imageWithName:@"tabbar_slider"] forState:UIControlStateSelected];
 //        }

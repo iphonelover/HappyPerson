@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 shuji. All rights reserved.
 //
 #import "HPNavigationController.h"
-#import "MainViewController.h"
+//#import "MainViewController.h"
 
 @interface HPNavigationController ()
 
@@ -17,7 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationBar.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
 //    [self setNavigationBarHidden:NO];
 //    self.navigationBar.hidden = YES;// 隐藏导航条，但由于导航条有效，系统的返回按钮页有效，所以可以使用系统的右滑返回手势。
