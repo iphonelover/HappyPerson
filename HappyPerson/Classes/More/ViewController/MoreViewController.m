@@ -125,6 +125,7 @@
                 }
                 case 4:{
                     //发送通知，Cell里接收通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"DELETECACHE" object:nil];
                     break;
                 }
                 default:

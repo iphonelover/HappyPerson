@@ -27,7 +27,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteCache:) name:@"DELETECACHE" object:nil];
         _title = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 150, 24)];
         _title.font = [UIFont systemFontOfSize:15.f];
         _title.textColor = [UIColor blackColor];
@@ -51,9 +51,9 @@
             NSArray *childFiles = [fileManager subpathsAtPath:rootPath];
             for (NSString *fileName in childFiles) {
                 NSString *fileFullPath = [rootPath stringByAppendingPathComponent:fileName];
-                fileSize = [HPAssistant fileSizeAtPath:fileFullPath];
+                fileSize += [HPAssistant fileSizeAtPath:fileFullPath];
             }
-            
+            fileSize+=[[SDImageCache sharedImageCache] getSize]/1024.0/1024.0;
         }
 
         _cache = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds)-image.size.width-90, 13, 70, 20)];
@@ -100,6 +100,21 @@
     }
     [self.contentView setNeedsDisplay];
     
+}
+
+-(void)deleteCache:(NSNotification *)notify
+{
+    NSLog(@"deleteCache");
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager fileExistsAtPath:HPCachesPath]) {
+        NSArray *files = [fileManager subpathsAtPath:HPCachesPath];
+        for (NSString *fileName in files) {
+            NSString *fileFullPath = [HPCachesPath stringByAppendingPathComponent:fileName];
+            [fileManager removeItemAtPath:fileFullPath error:nil];
+        }
+    }
+    _cache.text = @"0.0M";
 }
 
 -(void)switchEvent:(id)sender
