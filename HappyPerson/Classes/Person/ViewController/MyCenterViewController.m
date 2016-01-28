@@ -32,14 +32,22 @@
     
     
 //    _settingTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight - 64)];
-    _settingTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight-64)];
+    _settingTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight-64-49) style:UITableViewStyleGrouped];
+    _settingTableView.contentOffset = CGPointMake(0, -20);
     _settingTableView.delegate = self;
     _settingTableView.dataSource = self;
     _settingTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     _settingTableView.contentSize = CGSizeMake(kMainScreenWidth, 3000);
+    _settingTableView.layer.borderColor = [UIColor redColor].CGColor;
+    _settingTableView.layer.borderWidth = 2.f;
     _settingTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    _settingTableView.tableHeaderView = [self tableViewWithHeaderView];
     [self.view addSubview:_settingTableView];
+    
+    
+//    _settingTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+////        [weakSelf switchResponseloadNewData];
+//    }];
     
 }
 

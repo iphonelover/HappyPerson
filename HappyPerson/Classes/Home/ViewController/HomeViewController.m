@@ -186,8 +186,8 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.contentSize = CGSizeMake(kMainScreenWidth, 3000);
     //    _tableView.backgroundColor = [UIColor redColor];
-    _tableView.layer.borderWidth = 1;
-    _tableView.layer.borderColor = [UIColor redColor].CGColor;
+//    _tableView.layer.borderWidth = 1;
+//    _tableView.layer.borderColor = [UIColor redColor].CGColor;
     //    _tableView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
     [self.view addSubview:_tableView];
     
@@ -285,9 +285,7 @@
     WS(ws)
     
     // 2秒后刷新表格UI,下拉传递的page为第一页0
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // 刷新表格
-        //        [self.tableView reloadData];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
             [self setUpFamousResponse];
             [self setUpUserNewPreference];
@@ -297,14 +295,14 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 //这个里面是主线程要做的事  可以刷新UI
                 //由于数据是临时的所以刷新在每次请求里完成
-                [ws.tableView reloadData];
+//                [ws.tableView reloadData];
                 
             });
         });
         
         // 拿到当前的下拉刷新控件，结束刷新状态
         [self.tableView.mj_header endRefreshing];
-    });
+//    });
 }
 
 #pragma mark 上拉加载更多数据,现在上方方法里请求数据
@@ -349,28 +347,11 @@
 #pragma famous
 -(void)setUpFamousResponse
 {
-    if (!_hpFamousResponse) {
-        _hpFamousResponse = [[HPFamousResponse alloc] init];
+//    if (!_hpFamousResponse) {
+//        _hpFamousResponse = [[HPFamousResponse alloc] init];
+    
         
-        WS(ws);
-        
-        //此种方法的请求headerview不会叠加
-        [[HPVenderClientKit sharedInstance] getFamousProduct:nil withPage:nil success:^(NSDictionary *famousItems) {
-            if ([famousItems count] > 0) {
-                _famousModel = [HPFamousModel objectWithKeyValues:famousItems];
-                //下拉需要，上拉不需要这一步
-                [ws.famousArray removeAllObjects];
-                for (int i = 0; i < [_famousModel.deals count]; i++) {
-                    HPFamousDealsModel *famousDealsModel = [HPFamousDealsModel objectWithKeyValues:ws.famousModel.deals[i]];
-                    [ws.famousArray addObject:famousDealsModel];
-                }
-                [ws.tableView reloadData];
-                
-            }
-        } failure:^(NSError *error) {
-            
-        }];
-        //此种方法的请求 底部的footerview会叠加到上方的headerview下方，数据请求成功后footerview才会移动到下方
+                //此种方法的请求 底部的footerview会叠加到上方的headerview下方，数据请求成功后footerview才会移动到下方
         //        _hpFamousResponse.responseSuccessBlock = ^(id responseData){
         //            if ([responseData isKindOfClass:[NSDictionary class]]) {
         //                if ([responseData count] > 0) {
@@ -386,7 +367,28 @@
         //                }
         //            }
         //        };
-    }
+//    }
+    WS(ws);
+
+    //此种方法的请求headerview不会叠加
+    [[HPVenderClientKit sharedInstance] getFamousProduct:nil withPage:nil success:^(NSDictionary *famousItems) {
+        if ([famousItems count] > 0) {
+            _famousModel = [HPFamousModel objectWithKeyValues:famousItems];
+            //下拉需要，上拉不需要这一步
+            [ws.famousArray removeAllObjects];
+            for (int i = 0; i < [_famousModel.deals count]; i++) {
+                HPFamousDealsModel *famousDealsModel = [HPFamousDealsModel objectWithKeyValues:ws.famousModel.deals[i]];
+                [ws.famousArray addObject:famousDealsModel];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [ws.tableView reloadData];
+            });
+            
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 
 #pragma userNewPreference
@@ -411,7 +413,7 @@
      };
      }*/
     
-    WS(ws)
+    WS(ws);
     [[HPVenderClientKit sharedInstance] getUserNewPreference:nil success:^(NSArray *preferenceItems) {
         if ([preferenceItems count]>0) {
             [ws.userNewArray removeAllObjects];
@@ -419,7 +421,9 @@
                 HPUserNewArraysModel *userNewArrayModel = [HPUserNewArraysModel objectWithKeyValues:preferenceItems[i]];
                 [ws.userNewArray addObject:userNewArrayModel];
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
                 [ws.tableView reloadData];
+            });
         }
     } failure:^(NSError *error) {
         
@@ -437,7 +441,9 @@
             HPFansLifeArrayModel *fansArrayModel = [HPFansLifeArrayModel objectWithKeyValues:fanLifeItems[i]];
             [ws.fansArray addObject:fansArrayModel];
         }
-        [ws.tableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ws.tableView reloadData];
+        });
     } failure:^(NSError *error) {
         
     }];
@@ -454,8 +460,9 @@
             [ws.performanceArray addObject:performanceArrayModel];
             
         }
-        [ws.tableView reloadData];
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ws.tableView reloadData];
+        });
         
     } failure:^(NSError *error) {
         
@@ -474,7 +481,9 @@
             [ws.recommandArray addObject:recommandModel];
         }
         
-        [ws.tableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ws.tableView reloadData];
+        });
 //        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:5];
 //        [ws.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 //        
@@ -611,17 +620,26 @@
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"跳转" message:@"跳转到下一页" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [alert show];
             };
-            if ([_famousArray count]>indexPath.row) {
                 
                 
                 [famousCell setModel:_famousArray];
-            }
             famousCell.backgroundColor = [UIColor colorWithHexString:@"#ffffff"];
             
             return famousCell;
             
-            break;
+            }else{
+                static NSString *cellIndentifier = @"CellIdentifier11";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+                }
+                
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                return cell;
             }
+            break;
+
         }
         case 2:{
             if ([_userNewArray count] > 0) {

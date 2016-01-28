@@ -3,26 +3,23 @@
 <plist version="1.0">
 <array>
 	<array>
-		<dict>
-			<key>title</key>
-			<string>扫一扫</string>
-		</dict>
+		<string>扫一扫</string>
 	</array>
 	<array>
-		<dict/>
-		<string></string>
-		<string></string>
-		<string></string>
-		<string></string>
+		<string>省流量模式</string>
+		<string>消息提醒</string>
+		<string>分享设置</string>
+		<string>邀请好友使用美团</string>
+		<string>清空缓存</string>
 	</array>
 	<array>
-		<string></string>
-		<string></string>
-		<string></string>
-		<string></string>
+		<string>意见反馈</string>
+		<string>支付帮助</string>
+		<string>网络诊断</string>
+		<string>关于美团</string>
 	</array>
 	<array>
-		<string></string>
+		<string>精品应用</string>
 	</array>
 </array>
 </plist>

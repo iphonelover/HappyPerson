@@ -21,7 +21,7 @@
     static HPVenderClientKit *clientKitInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        clientKitInstance = [[HPVenderClientKit alloc] init];
+        clientKitInstance = [[self alloc] init];
     });
     return clientKitInstance;
 }
@@ -62,8 +62,11 @@
         failure(error);
     };
     
+    
     NSString *url = [[HPRequestURL sharedInstance] famousProductURL];
-    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
+    NSString *urlStr = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [requestClient GET:urlStr parameters:nil success:successBlock failure:failureBlock];
     
 }
  
@@ -133,8 +136,9 @@
         failure(error);
     };
     NSString *url = [[HPRequestURL sharedInstance] userNewPreferenceURL];
-    
-    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
+    NSString *urlStr = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [requestClient GET:urlStr parameters:nil success:successBlock failure:failureBlock];
 }
 
 -(void)getFanLife:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
@@ -161,8 +165,9 @@
         failure(error);
     };
     NSString *url = [[HPRequestURL sharedInstance] fanLifeURL];
-    
-    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
+    NSString *urlStr = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [requestClient GET:urlStr parameters:nil success:successBlock failure:failureBlock];
 }
 
 -(void)getPerformance:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
@@ -189,8 +194,9 @@
         failure(error);
     };
     NSString *url = [[HPRequestURL sharedInstance] performanceURL];
-    
-    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
+    NSString *urlStr = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [requestClient GET:urlStr parameters:nil success:successBlock failure:failureBlock];
 }
 
 -(void)getHotLine:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
@@ -217,8 +223,9 @@
         failure(error);
     };
     NSString *url = [[HPRequestURL sharedInstance] hotLineUpURL];
-    
-    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
+    NSString *urlStr = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [requestClient GET:urlStr parameters:nil success:successBlock failure:failureBlock];
 }
 
 -(void)getRecommand:(NSString *)param success:(void (^)(NSArray *))success failure:(void (^)(NSError *))failure
@@ -245,7 +252,8 @@
         failure(error);
     };
     NSString *url = [[HPRequestURL sharedInstance] recommandURL];
-    
-    [requestClient GET:url parameters:nil success:successBlock failure:failureBlock];
+    NSString *urlStr = [url stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [requestClient GET:urlStr parameters:nil success:successBlock failure:failureBlock];
 }
 @end

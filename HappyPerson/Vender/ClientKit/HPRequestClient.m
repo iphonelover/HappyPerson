@@ -17,7 +17,9 @@
     if (self) {
         self.requestSerializer = [AFHTTPRequestSerializer serializer];
         [self.requestSerializer setTimeoutInterval:40];
-        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",nil];
+        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",nil];
+        NSStringEncoding gbk = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        self.responseSerializer.stringEncoding = gbk;
     }
     return self;
 }
