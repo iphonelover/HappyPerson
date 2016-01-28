@@ -141,6 +141,7 @@
     if (_isOn == on) {
         return;
     }
+    _isOn = on;
     CGFloat margin = (CGRectGetHeight(self.bounds)-HPThumbSize)/2;
     if (!self.isOn) {
         self.onView.frame = CGRectMake(-1*CGRectGetWidth(self.bounds), 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
@@ -150,7 +151,7 @@
     }else{
         self.onView.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
         self.offView.frame = CGRectMake(-1*CGRectGetWidth(self.bounds), 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
-        self.thumbView.frame = CGRectMake(CGRectGetWidth(self.bounds)-margin-HPThumbSize, margin, HPThumbSize, HPThumbSize);
+        self.thumbView.frame = CGRectMake(CGRectGetWidth(self.bounds)-HPThumbSize+margin, margin, HPThumbSize, HPThumbSize);
     }
     
     [self sendActionsForControlEvents:UIControlEventValueChanged];

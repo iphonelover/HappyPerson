@@ -90,6 +90,7 @@
         if (rowIndex == 0) {
             _hpSwitch.hidden = NO;
             _imgView.hidden = YES;
+            [_hpSwitch addTarget:self action:@selector(switchEvent:) forControlEvents:UIControlEventValueChanged];
         }
         if (rowIndex == 4) {
             _hpSwitch.hidden = YES;
@@ -99,6 +100,11 @@
     }
     [self.contentView setNeedsDisplay];
     
+}
+
+-(void)switchEvent:(id)sender
+{
+    NSLog(@"SSSSS");
 }
 
 
