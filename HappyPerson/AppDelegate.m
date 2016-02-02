@@ -71,7 +71,14 @@
     MoreViewController *more = [[MoreViewController alloc] init];
 
     
-    [_hpTabController setViewControllers:@[home,shop,myCenter,more]];
+    HPNavigationController *hpNavController1 = [[HPNavigationController alloc] initWithRootViewController:home];
+    HPNavigationController *hpNavController2 = [[HPNavigationController alloc] initWithRootViewController:shop];
+    HPNavigationController *hpNavController3 = [[HPNavigationController alloc] initWithRootViewController:myCenter];
+    HPNavigationController *hpNavController4 = [[HPNavigationController alloc] initWithRootViewController:more];
+
+    
+    
+    [_hpTabController setViewControllers:@[hpNavController1,hpNavController2,hpNavController3,hpNavController4]];
     
     
     
@@ -114,6 +121,11 @@
     return YES;
 }
 
+-(UINavigationController *)rootNaviController
+{
+    return _rootNaviController;
+}
+
 - (void)addChildViewControl:(CustomViewController *)childVc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
 {
     // 设置标题图片
@@ -130,9 +142,10 @@
 -(void)enter
 {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"kFirstLogined"];
-    _hpNavController = [[HPNavigationController alloc] initWithRootViewController:_hpTabController];
+//    _hpNavController = [[HPNavigationController alloc] initWithRootViewController:_hpTabController];
 //    _xwTabBarController.tabBar.hidden = YES;
-    self.window.rootViewController = _hpNavController;
+    //如果rootViewController是NavigationController，再程序退到后台后再进入前台 非首页的tableview会向下移动20，并且首页距离屏幕上方的高度是44.
+    self.window.rootViewController = _hpTabController;
     
     
 

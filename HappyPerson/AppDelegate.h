@@ -19,7 +19,7 @@
 
 @property (nonatomic, assign) CLLocation *currentLocation;
 @property (nonatomic, strong) HPTableBarController *hpTabController;
-@property (nonatomic, strong) HPNavigationController *hpNavController;
+@property (nonatomic, strong) UINavigationController *rootNaviController;
 
 
 

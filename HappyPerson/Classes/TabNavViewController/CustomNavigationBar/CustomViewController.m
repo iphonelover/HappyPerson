@@ -29,23 +29,25 @@
 //        self.wantsFullScreenLayout = YES;
         //以上的方法过期了，下面两句使得tableview不会和上方的导航条有20的距离
         self.extendedLayoutIncludesOpaqueBars = NO;//不透明的操作栏
+//        self.automaticallyAdjustsScrollViewInsets = YES;
 
         //如果elf.edgesForExtendedLayout不能设置成UIRectEdgeTop或者UIRectEdgeAll，tableview和导航条之间也会有20的间距
-        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+        self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;//这样设置后如果距离顶部是64，tableviewOffset会向下移动20 如果是44 其他页面就不会正常
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
 
     }
     return self;
 }
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-
-//    self.wantsFullScreenLayout = YES;
-    //代替了以上的方法：
-    self.extendedLayoutIncludesOpaqueBars = NO;
-    self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
-}
+//- (void)awakeFromNib
+//{
+//    [super awakeFromNib];
+//
+////    self.wantsFullScreenLayout = YES;
+//    //代替了以上的方法：
+//    self.extendedLayoutIncludesOpaqueBars = NO;
+//    self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
+//}
 
 - (void)viewDidLoad
 {

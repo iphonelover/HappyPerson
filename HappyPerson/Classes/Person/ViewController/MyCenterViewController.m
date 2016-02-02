@@ -32,7 +32,7 @@
     
     
 //    _settingTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight - 64)];
-    _settingTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight-64-49) style:UITableViewStyleGrouped];
+    _settingTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight-64) style:UITableViewStyleGrouped];
     _settingTableView.contentOffset = CGPointMake(0, -20);
     _settingTableView.delegate = self;
     _settingTableView.dataSource = self;
@@ -229,7 +229,8 @@
     
     
     SetViewController *setSubVC = [[SetViewController alloc] init];
-    [ApplicationDelegate.hpNavController pushViewController:setSubVC animated:YES];
+    [self.navigationController pushViewController:setSubVC animated:YES];
+//    [ApplicationDelegate.hpNavController pushViewController:setSubVC animated:YES];
 //    switch (indexPath.section) {
 //        case 0:
 //            switch (indexPath.row) {

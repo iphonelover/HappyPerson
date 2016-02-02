@@ -179,12 +179,13 @@
     NSLog(@"locationCity is %@",ApplicationDelegate.locationCity);
     [self setNaviBarTitle:@"生活"];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, kMainScreenWidth, kMainScreenHeight-44-49)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight-64)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.contentSize = CGSizeMake(kMainScreenWidth, 3000);
+//    _tableView.contentOffset = CGPointMake(0, 0);
     //    _tableView.backgroundColor = [UIColor redColor];
 //    _tableView.layer.borderWidth = 1;
 //    _tableView.layer.borderColor = [UIColor redColor].CGColor;
@@ -245,7 +246,7 @@
 -(void)click:(id)sender
 {
     MyCenterViewController *v3 = [[MyCenterViewController alloc] init];
-    [ApplicationDelegate.hpNavController pushViewController:v3 animated:YES];
+//    [ApplicationDelegate.hpNavController pushViewController:v3 animated:YES];
     
     //    [self pushViewController:v3 animated:YES];
 }
