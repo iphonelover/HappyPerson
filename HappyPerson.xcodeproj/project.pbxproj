@@ -77,6 +77,7 @@
 		4A5B24331C58AAE900BCA3D8 /* HPSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5B24321C58AAE900BCA3D8 /* HPSwitch.m */; settings = {ASSET_TAGS = (); }; };
 		4A5B24361C58B23300BCA3D8 /* bg_switch_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5B24341C58B23300BCA3D8 /* bg_switch_off@2x.png */; settings = {ASSET_TAGS = (); }; };
 		4A5B24371C58B23300BCA3D8 /* bg_switch_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5B24351C58B23300BCA3D8 /* bg_switch_on@2x.png */; settings = {ASSET_TAGS = (); }; };
+		4A6B3E8F1C61E77700FD70A5 /* HPCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6B3E8E1C61E77600FD70A5 /* HPCodeViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4AAC71001BBA835E001BAD9E /* GuidanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC70FF1BBA835E001BAD9E /* GuidanceView.m */; };
 		4AAC71081BC65480001BAD9E /* GuidanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC71071BC65480001BAD9E /* GuidanceViewController.m */; };
 		4AAC710B1BC65680001BAD9E /* GuidanceScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC710A1BC65680001BAD9E /* GuidanceScrollView.m */; };
@@ -348,6 +349,8 @@
 		4A5B24321C58AAE900BCA3D8 /* HPSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPSwitch.m; sourceTree = "<group>"; };
 		4A5B24341C58B23300BCA3D8 /* bg_switch_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_switch_off@2x.png"; sourceTree = "<group>"; };
 		4A5B24351C58B23300BCA3D8 /* bg_switch_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_switch_on@2x.png"; sourceTree = "<group>"; };
+		4A6B3E8D1C61E77600FD70A5 /* HPCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPCodeViewController.h; sourceTree = "<group>"; };
+		4A6B3E8E1C61E77600FD70A5 /* HPCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPCodeViewController.m; sourceTree = "<group>"; };
 		4AAC70FE1BBA835E001BAD9E /* GuidanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidanceView.h; sourceTree = "<group>"; };
 		4AAC70FF1BBA835E001BAD9E /* GuidanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuidanceView.m; sourceTree = "<group>"; };
 		4AAC71061BC65480001BAD9E /* GuidanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuidanceViewController.h; sourceTree = "<group>"; };
@@ -586,6 +589,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A489DFF1B64A29C002E3F20 /* AVFoundation.framework in Frameworks */,
 				4A489E2D1B64BEDC002E3F20 /* AMapSearchKit.framework in Frameworks */,
 				4A489E1F1B64A347002E3F20 /* UIKit.framework in Frameworks */,
 				4A489E1D1B64A33C002E3F20 /* MobileCoreServices.framework in Frameworks */,
@@ -603,7 +607,6 @@
 				4A489E051B64A2B5002E3F20 /* CoreFoundation.framework in Frameworks */,
 				4A489E031B64A2AC002E3F20 /* CoreAudio.framework in Frameworks */,
 				4A489E011B64A2A4002E3F20 /* CFNetwork.framework in Frameworks */,
-				4A489DFF1B64A29C002E3F20 /* AVFoundation.framework in Frameworks */,
 				4A489DFD1B64A292002E3F20 /* libxml2.dylib in Frameworks */,
 				4A489DFB1B64A28A002E3F20 /* libresolv.dylib in Frameworks */,
 				4A489DF91B64A281002E3F20 /* CoreText.framework in Frameworks */,
@@ -1147,6 +1150,8 @@
 			children = (
 				4ADC96311C48C5DD00DAB0CF /* MoreViewController.h */,
 				4ADC96321C48C5DD00DAB0CF /* MoreViewController.m */,
+				4A6B3E8D1C61E77600FD70A5 /* HPCodeViewController.h */,
+				4A6B3E8E1C61E77600FD70A5 /* HPCodeViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1736,6 +1741,7 @@
 				4ADC964C1C48C5DD00DAB0CF /* HPUserNewArraysModel.m in Sources */,
 				4ADC965D1C48C5DD00DAB0CF /* HPUserNewTableCell.m in Sources */,
 				4A2C1C531B647A710037D0F7 /* SDWebImageCompat.m in Sources */,
+				4A6B3E8F1C61E77700FD70A5 /* HPCodeViewController.m in Sources */,
 				4A3D043E1BE8CA210028CE3B /* TAPageControl.m in Sources */,
 				4ADC964E1C48C5DD00DAB0CF /* HPFansLifeResponse.m in Sources */,
 				4ADC966A1C48C5DE00DAB0CF /* MyCenterViewController.m in Sources */,
