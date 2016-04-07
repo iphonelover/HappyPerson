@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BA32F4148CF429ED7E63340B58128B202B7EF204",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "431E9FE0F541630B7223BF2F09CD398426E8E9D8" : 0,
+    "BA32F4148CF429ED7E63340B58128B202B7EF204" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D33C8683-165F-4835-9964-6E7DC126D67D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "431E9FE0F541630B7223BF2F09CD398426E8E9D8" : "",
+    "BA32F4148CF429ED7E63340B58128B202B7EF204" : "HappyPerson\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HappyPerson",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "HappyPerson.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Mellen007\/HappyPerson.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "431E9FE0F541630B7223BF2F09CD398426E8E9D8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "work.github.com:Mellen007\/HappyPerson.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BA32F4148CF429ED7E63340B58128B202B7EF204"
+    }
+  ]
+}

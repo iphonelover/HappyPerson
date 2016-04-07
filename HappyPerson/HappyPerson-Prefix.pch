@@ -1,0 +1,50 @@
+//
+//  HappyPerson-Prefix.pch
+//  HappyPerson
+//
+//  Created by wei on 15/6/20.
+//  Copyright (c) 2015年 shuji. All rights reserved.
+//
+
+//#ifndef HappyPerson_HappyPerson_Prefix_pch
+//#define HappyPerson_HappyPerson_Prefix_pch
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+#import "Common.h"
+#import "UIImage+WB.h"
+#import "GlobalDefine.h"
+#import "MYHeader.h"
+#import "UITableView+HPTableView.h"
+#import "MJExtension.h"
+#import "MJRefresh.h"
+#import "HPBaseResponse.h"
+#import "HPVenderClientKit.h"
+#import "UIImageView+WebCache.h"
+
+
+/*
+ XCode LLVM XXX - Preprocessing中Debug会添加 DEBUG=1 标志
+ */
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(FORMAT, ...) nil
+#endif
+
+//#import "MYConstants.h"
+
+//#import "MYBaseViewController.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//#endif

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <string>icon_homepage_foodCategory 美食</string>
+    <string>icon_homepage_movieCategory 电影</string>
+    <string>icon_homepage_hotelCategory 酒店</string>
+    <string>icon_homepage_KTVCategory KTV</string>
+    <string>icon_homepage_CouponCategory 优惠买单</string>
+    <string>icon_homepage_aroundjourneyCategory 周边游</string>
+    <string>icon_homepage_takeoutCategory 外卖</string>
+    <string>icon_homepage_beautyCategory 丽人</string>
+    <string>icon_homepage_entertainmentCategory 休闲娱乐</string>
+    <string>icon_homepage_dailyNewDealCategory 今日新单</string>
+    <string>icon_homepage_shoppingCategory 购物</string>
+    <string>icon_homepage_lifeServiceCategory 生活服务</string>
+    <string>icon_homepage_travellingCategory 旅游</string>
+    <string>icon_homepage_foottreatCategory 足疗按摩</string>
+    <string>icon_homepage_fastfoodCategory 小吃快餐</string>
+    <string>icon_homepage_moreCategory 全部分类</string>
+</array>
+</plist>
