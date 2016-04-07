@@ -27,6 +27,7 @@
 		4A2C1C5D1B647A710037D0F7 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C1AB31B647A700037D0F7 /* UIImageView+WebCache.m */; };
 		4A2C1C5E1B647A710037D0F7 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C1AB51B647A700037D0F7 /* UIView+WebCacheOperation.m */; };
 		4A2C1D141B6483A80037D0F7 /* CommonTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C1D131B6483A80037D0F7 /* CommonTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4A2FD09F1C940D6700744510 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2FD09E1C940D6700744510 /* GLKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4A3D043A1BE8CA210028CE3B /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D042A1BE8CA210028CE3B /* NSData+SDDataCache.m */; settings = {ASSET_TAGS = (); }; };
 		4A3D043B1BE8CA210028CE3B /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D042D1BE8CA210028CE3B /* TAAbstractDotView.m */; settings = {ASSET_TAGS = (); }; };
 		4A3D043C1BE8CA210028CE3B /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3D042F1BE8CA210028CE3B /* TAAnimatedDotView.m */; settings = {ASSET_TAGS = (); }; };
@@ -284,6 +285,7 @@
 		4A2C1D121B6483A80037D0F7 /* CommonTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTools.h; sourceTree = "<group>"; };
 		4A2C1D131B6483A80037D0F7 /* CommonTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTools.m; sourceTree = "<group>"; };
 		4A2C1D181B6484D20037D0F7 /* MYHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MYHeader.h; sourceTree = "<group>"; };
+		4A2FD09E1C940D6700744510 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		4A3D04291BE8CA210028CE3B /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		4A3D042A1BE8CA210028CE3B /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		4A3D042C1BE8CA210028CE3B /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A2FD09F1C940D6700744510 /* GLKit.framework in Frameworks */,
 				4A489DFF1B64A29C002E3F20 /* AVFoundation.framework in Frameworks */,
 				4A489E2D1B64BEDC002E3F20 /* AMapSearchKit.framework in Frameworks */,
 				4A489E1F1B64A347002E3F20 /* UIKit.framework in Frameworks */,
@@ -1404,6 +1407,7 @@
 		B2667133300BBF578CD6D89E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A2FD09E1C940D6700744510 /* GLKit.framework */,
 				4A489E2C1B64BEDC002E3F20 /* AMapSearchKit.framework */,
 				4A489E1E1B64A347002E3F20 /* UIKit.framework */,
 				4A489E1C1B64A33C002E3F20 /* MobileCoreServices.framework */,

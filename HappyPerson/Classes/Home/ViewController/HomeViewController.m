@@ -89,18 +89,6 @@
     
     _scrollDataArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"scrollData" ofType:@"plist"]];
     
-    
-    
-    //    [];
-    //此句隐藏navigationBar
-    //    [self hideNaviBar:YES];
-    
-    
-    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //    if (![defaults objectForKey:@"intro_screen_viewed"]) {
-    //        [self hideNaviBar:YES];
-    //
-    //    }else{
     _imgArray = [NSArray arrayWithObjects:[HPAssistant imageWithContentsOfFile:@"scrolimg1"],[HPAssistant imageWithContentsOfFile:@"scrolimg2"],[HPAssistant imageWithContentsOfFile:@"scrolimg3"], nil];
     //tableview布局
     [self mineTableView];
@@ -177,7 +165,12 @@
     }
     
     NSLog(@"locationCity is %@",ApplicationDelegate.locationCity);
+    
+    //设置标题
     [self setNaviBarTitle:@"生活"];
+    
+    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    searchBtn.frame = 
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kMainScreenWidth, kMainScreenHeight-64)];
     _tableView.delegate = self;
@@ -185,21 +178,23 @@
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.contentSize = CGSizeMake(kMainScreenWidth, 3000);
-//    _tableView.contentOffset = CGPointMake(0, 0);
-    //    _tableView.backgroundColor = [UIColor redColor];
-//    _tableView.layer.borderWidth = 1;
-//    _tableView.layer.borderColor = [UIColor redColor].CGColor;
-    //    _tableView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
+    _tableView.backgroundColor = [UIColor colorWithHexString:@"#f0efed"];
+
     [self.view addSubview:_tableView];
-    
-    //    _tableView.tableHeaderView = [self tableViewWithHeaderView];
-    
+    _tableView.tableFooterView = [self tableViewWithFooterView];
     
     _cityBtn = [CustomNaviBarView createNormalNaviBarBtnByTitle:ApplicationDelegate.locationCity target:self action:@selector(selectCity:)];
     [self setNaviBarLeftBtn:_cityBtn];
     
+    [self performSelector:@selector(goTop:) withObject:self afterDelay:30];
+    
 }
 
+#pragma mark - 自动滚回顶部
+-(void)goTop:(id)sender
+{
+    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
 
 -(void)selectCity:(id)sender
 {
@@ -219,7 +214,48 @@
     
 }
 
-
+#pragma mark - 底部FooterView
+-(UIView *)tableViewWithFooterView
+{
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 150)];
+    footerView.backgroundColor = [UIColor colorWithHexString:@"#f0efed"];
+    UIButton *lookAll = [UIButton buttonWithType:UIButtonTypeCustom];
+    lookAll.layer.borderWidth = 0.2f;
+    lookAll.layer.cornerRadius = 3.f;
+    lookAll.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    lookAll.frame = CGRectMake(10, 10, kMainScreenWidth-20, 35);
+    [lookAll setTitle:@"查看全部团购" forState:UIControlStateNormal];
+    lookAll.titleLabel.font = [UIFont systemFontOfSize:14.f];
+    [lookAll setBackgroundColor:[UIColor colorWithHexString:@"#fbfbfb"]];
+    [lookAll setTitleColor:[UIColor colorWithHexString:@"#33c1af"] forState:UIControlStateNormal];
+    [lookAll addTarget:self action:@selector(lookAllClick:) forControlEvents:UIControlEventTouchUpInside];
+    [footerView addSubview:lookAll];
+    
+    UIView *myDna = [[UIView alloc] initWithFrame:CGRectMake(10, 55, kMainScreenWidth-20, CGRectGetHeight(footerView.frame)-55)];
+    myDna.layer.cornerRadius = 3.f;
+    myDna.layer.borderWidth = 0.2f;
+    myDna.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    myDna.backgroundColor = [UIColor colorWithHexString:@"#fbfbfb"];
+    [footerView addSubview:myDna];
+    UILabel *dnaLabel = [[UILabel alloc] initWithFrame:CGRectMake(93, 10, CGRectGetWidth(myDna.frame)-93*2, 40)];
+    [dnaLabel setText:@"愿意让我们更了解你吗让美团的推荐更符合你的胃口"];
+    dnaLabel.lineBreakMode=NSLineBreakByWordWrapping;
+    dnaLabel.font = [UIFont systemFontOfSize:12.f];
+    [dnaLabel setTextColor:[UIColor grayColor]];
+    [myDna addSubview:dnaLabel];
+    
+    UIButton *dnaBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    dnaBtn.layer.borderWidth = 0.1f;
+    dnaBtn.layer.cornerRadius = 3.f;
+    dnaBtn.titleLabel.font = [UIFont systemFontOfSize:14.f];
+    dnaBtn.frame = CGRectMake(10, CGRectGetHeight(myDna.frame)-15-35, CGRectGetWidth(myDna.frame)-20, 35);
+    [dnaBtn setTitle:@"我的美团DNA" forState:UIControlStateNormal];
+    [dnaBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [dnaBtn setBackgroundColor:[UIColor colorWithHexString:@"33c1af"]];
+    [myDna addSubview:dnaBtn];
+    
+    return footerView;
+}
 
 
 -(UIView *)tableViewWithHeaderView
@@ -288,9 +324,9 @@
     // 2秒后刷新表格UI,下拉传递的page为第一页0
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-            [self setUpFamousResponse];
-//            [self setUpUserNewPreference];
-            [self setUpFansResponse];
+//            [self setUpFamousResponse];
+            [self setUpUserNewPreference];
+//            [self setUpFansResponse];
             [self setUpPreformanceResponse];
             [self setUpRecommandResponse];
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -319,56 +355,11 @@
     });
 }
 
-#pragma mark - 调用请求数据接口
-/*
--(void)loadFamousResponse
-{
-    if (self.hpFamousResponse) {
-        self.hpFamousResponse.currentPage = kStartPageCount;
-        [self.hpFamousResponse loadNewData];
-    }
-}
-
--(void)loadUserNewResponse
-{
-    if (self.hpUserNewResponse) {
-        [self.hpUserNewResponse loadNewData];
-    }
-}
-
--(void)loadFansLifeResponse
-{
-    if (self.hpFansLifeResponse) {
-        //        [self];
-    }
-}
-*/
 
 #pragma mark - 获取数据后的处理方法
-#pragma famous
+#pragma mark famous
 -(void)setUpFamousResponse
 {
-//    if (!_hpFamousResponse) {
-//        _hpFamousResponse = [[HPFamousResponse alloc] init];
-    
-        
-                //此种方法的请求 底部的footerview会叠加到上方的headerview下方，数据请求成功后footerview才会移动到下方
-        //        _hpFamousResponse.responseSuccessBlock = ^(id responseData){
-        //            if ([responseData isKindOfClass:[NSDictionary class]]) {
-        //                if ([responseData count] > 0) {
-        //                     _famousModel = [HPFamousModel objectWithKeyValues:responseData];
-        //                    //下拉需要，上拉不需要这一步
-        //                    [ws.famousArray removeAllObjects];
-        //                    for (int i = 0; i < [_famousModel.deals count]; i++) {
-        //                        HPFamousDealsModel *famousDealsModel = [HPFamousDealsModel objectWithKeyValues:ws.famousModel.deals[i]];
-        //                        [ws.famousArray addObject:famousDealsModel];
-        //                    }
-        //                    [ws.tableView reloadData];
-        //
-        //                }
-        //            }
-        //        };
-//    }
     WS(ws);
 
     //此种方法的请求headerview不会叠加
@@ -392,7 +383,7 @@
 
 }
 
-#pragma userNewPreference
+#pragma mark userNewPreference
 
 -(void)setUpUserNewPreference
 {
@@ -430,7 +421,7 @@
         
     }];
 }
-#pragma FansArray
+#pragma mark FansArray
 
 -(void)setUpFansResponse
 {
@@ -449,7 +440,7 @@
         
     }];
 }
-#pragma performanceArray
+#pragma mark performanceArray
 
 -(void)setUpPreformanceResponse
 {
@@ -470,7 +461,7 @@
     }];
 }
 
-#pragma recommandArray
+#pragma mark recommandArray
 
 -(void)setUpRecommandResponse
 {
@@ -485,14 +476,16 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [ws.tableView reloadData];
         });
-//        NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:5];
-//        [ws.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-//        
-//        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:5];
-//        [ws.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
     } failure:^(NSError *error) {
         
     }];
+}
+
+#pragma mark - 查看全部团购
+
+-(void)lookAllClick:(UIButton *)sender
+{
+    NSLog(@"跳转到下一个页面");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -503,12 +496,6 @@
 
 #pragma mark -
 #pragma mark UITableViewDataSource and UITableViewDelegate
-
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    UIView *headerView = [UIView new];
-//    return #headerView#;
-//}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
